@@ -27,6 +27,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	public static final String USER_NAME ="user_name";
 	public static final String USER_EMAIL ="user_email";
 	public static final String USER_PASSWORD ="user_password";
+	public static final String USER ="user";
+	public static final String organiser ="organiser";
 	//	Address table Columns
 	public static final String ADDRESS_ID="address_id";
 	public static final String CITY="city";
@@ -89,7 +91,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	// create table sql query
 	private final String CREATE_USER_TABLE = "CREATE TABLE " + TABLE_USER + "("
 			+ USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + USER_NAME + " TEXT,"
-			+ USER_EMAIL + " TEXT," + USER_PASSWORD + " TEXT" + ")";
+			+ USER_EMAIL + " TEXT," + USER_PASSWORD + " TEXT,"+ USER+" INTEGER DEFAULT 0)" ;
 
 	private final String CREATE_ADDRESS_TABLE = "CREATE TABLE " + TABLE_ADDRESS + "("
 			+ ADDRESS_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + CITY + " TEXT,"
@@ -153,12 +155,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		arg0.execSQL(CREATE_EVENT_TYPE_TABLE);
 		arg0.execSQL(CREATE_VENUE_FACILITY_TABLE);
 		arg0.execSQL(CREATE_VENUE_TABLE);
-		try {
-			databaseCreation.createDataBase();
-		}catch (Exception e){
-			e.printStackTrace();
-		}
-
 
 	}
 

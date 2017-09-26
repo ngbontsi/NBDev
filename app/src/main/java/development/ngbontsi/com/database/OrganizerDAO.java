@@ -135,7 +135,12 @@ public class OrganizerDAO {
     }
 
     public String getName(int orgId)throws Exception{
-        return getOrganizer(orgId).getOrganizer_name();
+        for(Organizer organizer:getAllOrganizers()){
+            if(organizer.getOrganizer_id()==orgId){
+                return organizer.getOrganizer_name();
+            }
+        }
+        return "Unknown";
     }
 
     /**

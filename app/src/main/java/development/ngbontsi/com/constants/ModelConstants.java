@@ -14,7 +14,8 @@ public enum ModelConstants {
     Organiser("ORGANISER"),
     User("USER"),
     Venue("VENUE"),
-    VenueFacility("VENUEFACILITY");
+    VenueFacility("VENUEFACILITY"),
+    Screen("SCREEN_NAME");
 
     private String model;
     private ModelConstants(String model){

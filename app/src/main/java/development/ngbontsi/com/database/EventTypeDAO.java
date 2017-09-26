@@ -138,7 +138,11 @@ EventType eventType = getEventType(cursor);
     }
 
     public String getDescription(int eventTypeId)throws Exception{
-        return getEventType(eventTypeId).getEvent_type_description();
+        for(EventType eventType: getAllEventTypes()){
+            if(eventType.getEvent_type_id()==eventTypeId)
+                return eventType.getEvent_type_description();
+        }
+        return "Unknown";
     }
     /**
      * This method is to delete user record

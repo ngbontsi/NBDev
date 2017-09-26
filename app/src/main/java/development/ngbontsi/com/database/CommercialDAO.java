@@ -140,7 +140,11 @@ public class CommercialDAO {
     }
 
     public String getDescription(int commercialId)throws Exception{
-        return getCommercial(commercialId).getEvent_commercial_description();
+        for(Commercial commercial:getAllCommercials()){
+            if(commercial.getEvent_commercial_id()==commercialId)
+                return commercial.getEvent_commercial_description();
+        }
+        return "Unknown";
     }
 
     /**

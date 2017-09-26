@@ -41,9 +41,6 @@ public class EventStatusDAO {
 
         ContentValues values = new ContentValues();
         values.put(EVENT_DESCRIPTION, eventStatus.getEvent_description());
-
-
-
         // Inserting Row
         db.insert(TABLE_EVENT_STATUS, null, values);
         db.close();
@@ -136,7 +133,11 @@ public class EventStatusDAO {
         return eventStatus;
     }
     public String getDescription(int eventStatusId)throws Exception{
-        return getEventStatus(eventStatusId).getEvent_description();
+        for(EventStatus eventStatus: getAllEventStatus()){
+            if(eventStatus.getEvent_status_id()==eventStatusId)
+                return eventStatus.getEvent_description();
+        }
+        return "Unknown";
     }
     
     /**

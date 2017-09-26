@@ -110,7 +110,8 @@ public class VenueDAO {
         String selection = VENUE_ID + " = ?";
 
         // selection argument
-        String[] selectionArgs = {String.valueOf(venueId)};
+
+        String[] selectionArgs = {Integer.toString(venueId)};
 
         // query user table with condition
         /**
@@ -134,7 +135,11 @@ public class VenueDAO {
     }
 
     public String getDescription(int venueId)throws Exception{
-        return  getVenue(venueId).getVenue_name();
+        for(Venue venue : getAllVenues()){
+            if(venue.getVenue_id()==venueId)
+                return venue.getVenue_name();
+        }
+        return  "Unknown";
     }
 
 

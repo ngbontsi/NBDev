@@ -48,6 +48,7 @@ import static development.ngbontsi.com.database.DatabaseHelper.VENUE_NAME;
 public class EventModule implements Serializable{
 
     private int event_id;
+    private String name;
     private String event_description;
     private String event_type_description;
     private String event_commercial_description;
@@ -76,6 +77,7 @@ public class EventModule implements Serializable{
         for(Event event: list){
             EventModule eventModule = new EventModule();
             eventModule.setEvent_id(event.getEvent_id());
+            eventModule.setName(event.getName());
             eventModule.setVenue_name(venueDAO.getDescription(event.getVenue_id()));
             eventModule.setEvent_type_description(eventTypeDAO.getDescription(event.getEvent_type_id()));
             eventModule.setEvent_description(eventStatusDAO.getDescription(event.getEvent_status_id()));
@@ -193,5 +195,13 @@ public class EventModule implements Serializable{
                     sql+=" And eve."+EVENT_ID+" = "+event_id;
                 }
         return sql;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

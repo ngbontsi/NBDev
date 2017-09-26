@@ -204,6 +204,7 @@ public class EventDAO {
         values.put(E_EVENT_STATUS_ID, event.getEvent_status_id());
         values.put(E_EVENT_TYPE_ID, event.getEvent_type_id());
         values.put(E_ORGANIZER_ID, event.getOrganizer_id());
+        values.put(EVENT_COMMERCIAL_ID,event.getEvent_commercial_id());
         values.put(E_VANUE_ID, event.getVenue_id());
         values.put(EVENT_NAME, event.getName());
         values.put(EVENT_STARTDATE, event.getStartDate());

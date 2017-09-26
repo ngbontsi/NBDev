@@ -1,15 +1,19 @@
 <resources>
     <string name="app_name">Event Booking System</string>
     <string name="text_accounts">All Events</string>
+    <string name="text_organiser">Organiser</string>
+    <string name="text_user">User</string>
     <string name="hint_name">Name</string>
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
-    <string name="hint_eventName">Event Name</string>
+    <string name="eventName">Event Name</string>
     <string name="hint_eventStatus">Event Status</string>
     <string name="hint_eventType">Event Type</string>
     <string name="hint_eventDate">Event date</string>
     <string name="hint_eventOrganizer">Event Organiser</string>
     <string name="hint_eventCommercial">Event Price</string>
+    <string name="hint_venue">Venue Name</string>
+    <string name="hint_eventDescription">Event Description</string>
     <string name="hint_confirm_password">Confirm Password</string>
     <string name="text_login">Login</string>
     <string name="text_register">Register</string>
@@ -18,6 +22,7 @@
     <string name="error_message_age">Enter Age</string>
     <string name="error_message_password">Enter Password</string>
     <string name="success_message">Registration Successful</string>
+    <string name="selected_event">event selected</string>
     <string name="text_not_member">No account yet? Create one</string>
     <string name="text_already_member">Already a member? Login</string>
     <string name="error_email_exists">Email Already Exists</string>
@@ -28,4 +33,16 @@
     <string name="text_title">user title</string>
     <string name="title_activity_test">Testing Activity</string>
     <string name="title_activity_event">EventActivity</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_search_view">SearchViewActivity</string>
+
+    <string name="text_city">City/Town</string>
+    <string name="text_street">Street Name</string>
+    <string name="text_line_1">Po Box</string>
+    <string name="text_line_2">Complex number</string>
+    <string name="text_line_3">Surburb/Area</string>
+    <string name="text_line_4">Province</string>
+    <string name="text_postal_code">Code</string>
+
+
 </resources>

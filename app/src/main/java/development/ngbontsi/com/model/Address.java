@@ -1,10 +1,13 @@
 package development.ngbontsi.com.model;
 
+import android.arch.persistence.room.PrimaryKey;
+
 /**
  * Created by nbontsi on 2017/06/07.
  */
 
 public class Address {
+    @PrimaryKey
     private int address_id;
     private String city;
     private String street;
