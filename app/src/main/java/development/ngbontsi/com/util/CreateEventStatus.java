@@ -2,9 +2,7 @@ package development.ngbontsi.com.util;
 
 import android.content.Context;
 
-import development.ngbontsi.com.database.CommercialDAO;
-import development.ngbontsi.com.database.EventStatusDAO;
-import development.ngbontsi.com.model.Commercial;
+import development.ngbontsi.com.database.EventStatusDatabase;
 import development.ngbontsi.com.model.EventStatus;
 
 /**
@@ -14,11 +12,11 @@ import development.ngbontsi.com.model.EventStatus;
 public class CreateEventStatus {
 
     private Context context;
-    private EventStatusDAO eventStatusDAO;
+    private EventStatusDatabase eventStatusDAO;
     private String[] names = new String[]{"New","Pasted","Cancelled","Still to come"};
     public CreateEventStatus(Context context){
         this.context = context;
-        eventStatusDAO = new EventStatusDAO(context);
+        eventStatusDAO = new EventStatusDatabase(context);
     }
     public void create(){
         int size = names.length;

@@ -1,18 +1,52 @@
 package development.ngbontsi.com.model;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+
+import java.util.Date;
+
 /**
  * Created by nbontsi on 2017/06/07.
  */
 
+@Entity(tableName = "event")
 public class Event {
+    @PrimaryKey(autoGenerate = true)
     private int event_id;
+    @ColumnInfo(name = "event_status_id")
     private int event_status_id;
+    @ColumnInfo(name = "event_type_id")
     private int event_type_id;
+    @ColumnInfo(name = "event_commercial_id")
     private int event_commercial_id;
+    @ColumnInfo(name = "organizer_id")
     private int organizer_id;
+    @ColumnInfo(name = "venue_id")
     private int venue_id;
+    @ColumnInfo(name = "description")
     private  String name;
-    private  String startDate;
+    @ColumnInfo(name = "start_date")
+    private String startDate;
+
+    public String getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
+
+    @ColumnInfo(name = "end_date")
+
     private  String endDate;
 
 
@@ -73,19 +107,5 @@ public class Event {
         this.name = name;
     }
 
-    public String getStartDate() {
-        return startDate;
-    }
 
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
-    }
-
-    public String getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
-    }
 }

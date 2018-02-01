@@ -73,7 +73,7 @@ eventModule = new EventModule(getActivity());
             fragmentPresenter.loadData(this.name);
         }else if(this.name.equals(ApplicationConstants.Search_Event.getValue())){
             try{
-                searchAdapter = new SearchAdapter(fragmentPresenter,eventModule.getAll());
+//                searchAdapter = new SearchAdapter(fragmentPresenter,eventModule.getAll());
                 recyclerView.setAdapter(searchAdapter);
             }catch (Exception e){
                 e.printStackTrace();

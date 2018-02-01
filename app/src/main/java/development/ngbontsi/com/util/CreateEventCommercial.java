@@ -2,7 +2,7 @@ package development.ngbontsi.com.util;
 
 import android.content.Context;
 
-import development.ngbontsi.com.database.CommercialDAO;
+import development.ngbontsi.com.database.CommercialDatabase;
 import development.ngbontsi.com.model.Commercial;
 
 /**
@@ -12,11 +12,11 @@ import development.ngbontsi.com.model.Commercial;
 public class CreateEventCommercial {
 
     private Context context;
-    private CommercialDAO commercialDAO;
+    private CommercialDatabase commercialDAO;
     private String[] names = new String[]{"Free ","Payable","Commercial"};
     public CreateEventCommercial(Context context){
         this.context = context;
-        commercialDAO = new CommercialDAO(context);
+        commercialDAO = new CommercialDatabase(context);
     }
     public void create(){
         int size = names.length;
@@ -24,7 +24,7 @@ public class CreateEventCommercial {
         {
             Commercial organizer = new Commercial();
             organizer.setEvent_commercial_description(names[i]);
-            commercialDAO.addUser(organizer);
+//            commercialDAO.addUser(organizer);
         }
 
     }

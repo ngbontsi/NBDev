@@ -2,10 +2,7 @@ package development.ngbontsi.com.util;
 
 import android.content.Context;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import development.ngbontsi.com.database.OrganizerDAO;
+import development.ngbontsi.com.database.OrganizerDatabase;
 import development.ngbontsi.com.model.Organizer;
 
 /**
@@ -15,12 +12,12 @@ import development.ngbontsi.com.model.Organizer;
 public class CreateOgrganizer {
 
     private Context context;
-    private OrganizerDAO organizerDAO;
+    private OrganizerDatabase organizerDAO;
     private String[] names = new String[]{"Mbacu ","Mzoli","Ndira","Khalima","Sox","Lira"};
     private String[] emails = new String[]{"Mbacu@gmail.com","Mzoli@gmail.com","Ndira@gmail.com","Khalima@gmail.com","Sox@gmail.com","Lira@gmail.com"};
    public CreateOgrganizer(Context context){
        this.context = context;
-       organizerDAO = new OrganizerDAO(context);
+       organizerDAO = new OrganizerDatabase(context);
    }
 public void create(){
     int size = names.length;
@@ -29,7 +26,7 @@ public void create(){
      Organizer organizer = new Organizer();
       organizer.setOrganizer_name(names[i]);
       organizer.setOrganizer_email(emails[i]);
-     organizerDAO.addUser(organizer);
+//     organizerDAO.addUser(organizer);
     }
 
 }

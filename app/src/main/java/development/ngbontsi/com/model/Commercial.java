@@ -1,11 +1,18 @@
 package development.ngbontsi.com.model;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+
 /**
  * Created by nbontsi on 2017/06/07.
  */
 
+@Entity(tableName = "commercial")
 public class Commercial {
+    @PrimaryKey(autoGenerate = true)
     private int event_commercial_id;
+    @ColumnInfo(name = "description")
     private String event_commercial_description;
 
     public int getEvent_commercial_id() {

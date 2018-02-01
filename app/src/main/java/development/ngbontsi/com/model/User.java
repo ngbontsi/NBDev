@@ -1,12 +1,33 @@
 package development.ngbontsi.com.model;
 
-import java.io.Serializable;
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.PrimaryKey;
 
+import java.io.Serializable;
+@Entity(tableName = "users")
 public class User implements Serializable{
 
+	@PrimaryKey(autoGenerate = true)
 	private int id;
+	@ColumnInfo(name= "first_name")
 	private String name;
+
+	@ColumnInfo(name="last_name")
+	private String lastName;
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	@ColumnInfo(name="email")
 	private String email;
+	@ColumnInfo(name= "password")
 	private String password;
 	public String getEmail() {
 		return email;

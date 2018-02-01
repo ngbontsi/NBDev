@@ -7,7 +7,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import development.ngbontsi.com.database.UserDao;
+
 import development.ngbontsi.com.R;
 
 
@@ -21,7 +21,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
 
 
     private InputValidation inputValidation;
-    private UserDao userDao;
+
    private ActivityLogInBinding logInBinding;
 
     @Override
@@ -56,7 +56,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
      * This method is to initialize objects to be used
      */
     private void initObjects() {
-        userDao = new UserDao(activity);
+
         inputValidation = new InputValidation(activity);
 
     }
@@ -95,17 +95,17 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
             return;
 
 
-        if (userDao.checkUser(logInBinding.textInputEditTextEmail.getText().toString().trim(), logInBinding.textInputEditTextPassword.getText().toString().trim())) {
-
-
-            Intent accountsIntent = new Intent(activity, UsersListActivity.class);
-            accountsIntent.putExtra("EMAIL", logInBinding.textInputEditTextEmail.getText().toString().trim());
-            emptyInputEditText();
-            startActivity(accountsIntent);
-
-
-        } else
-            // Snack Bar to show success message that record is wrong
-            Snackbar.make(logInBinding.nestedScrollView, getString(R.string.error_valid_email_password), Snackbar.LENGTH_LONG).show();
+//        if (userDao.checkUser(logInBinding.textInputEditTextEmail.getText().toString().trim(), logInBinding.textInputEditTextPassword.getText().toString().trim())) {
+//
+//
+//            Intent accountsIntent = new Intent(activity, UsersListActivity.class);
+//            accountsIntent.putExtra("EMAIL", logInBinding.textInputEditTextEmail.getText().toString().trim());
+//            emptyInputEditText();
+//            startActivity(accountsIntent);
+//
+//
+//        } else
+//            // Snack Bar to show success message that record is wrong
+//            Snackbar.make(logInBinding.nestedScrollView, getString(R.string.error_valid_email_password), Snackbar.LENGTH_LONG).show();
     }
 }

@@ -2,9 +2,7 @@ package development.ngbontsi.com.util;
 
 import android.content.Context;
 
-import development.ngbontsi.com.database.CommercialDAO;
-import development.ngbontsi.com.database.EventTypeDAO;
-import development.ngbontsi.com.model.Commercial;
+import development.ngbontsi.com.database.EventTypeDatabase;
 import development.ngbontsi.com.model.EventType;
 
 /**
@@ -14,11 +12,11 @@ import development.ngbontsi.com.model.EventType;
 public class CreateEventType {
 
     private Context context;
-    private EventTypeDAO eventTypeDAO;
+    private EventTypeDatabase eventTypeDAO;
     private String[] names = new String[]{"Music","Wedding","Perfomance","soccer","rugby"};
     public CreateEventType(Context context){
         this.context = context;
-        eventTypeDAO = new EventTypeDAO(context);
+        eventTypeDAO = new EventTypeDatabase(context);
     }
     public void create(){
         int size = names.length;

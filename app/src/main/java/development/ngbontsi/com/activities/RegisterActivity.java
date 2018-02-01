@@ -6,7 +6,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import development.ngbontsi.com.R;
-import development.ngbontsi.com.database.UserDao;
+
 import development.ngbontsi.com.databinding.ActivityRegisterBinding;
 import development.ngbontsi.com.model.User;
 import development.ngbontsi.com.util.DatabaseCreation;
@@ -16,7 +16,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private final AppCompatActivity activity = RegisterActivity.this;
 
     private InputValidation inputValidation;
-    private UserDao userDao;
+
     private User user;
     private ActivityRegisterBinding registerBinding;
     private DatabaseCreation databaseCreation;
@@ -48,7 +48,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
      */
     private void initObjects() {
         inputValidation = new InputValidation(activity);
-        userDao = new UserDao(activity);
+
         databaseCreation = new DatabaseCreation(activity);
         user = new User();
 
@@ -104,23 +104,23 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             return;
         }
 
-        if (!userDao.checkUser(registerBinding.textInputEditTextEmail.getText().toString().trim())) {
-
-            User nUser = new User();
-            nUser.setEmail(registerBinding.textInputEditTextEmail.getText().toString().trim());
-            nUser.setName(registerBinding.textInputEditTextName.getText().toString().trim());
-            nUser.setPassword(registerBinding.textInputEditTextPassword.getText().toString().trim());
-            userDao.addUser(nUser);
-
-            // Snack Bar to show success message that record saved successfully
-            Snackbar.make(registerBinding.nestedScrollView, getString(R.string.success_message), Snackbar.LENGTH_LONG).show();
-            emptyInputEditText();
-
-
-        } else {
-            // Snack Bar to show error message that record already exists
-            Snackbar.make(registerBinding.nestedScrollView, getString(R.string.error_email_exists), Snackbar.LENGTH_LONG).show();
-        }
+//        if (!userDao.checkUser(registerBinding.textInputEditTextEmail.getText().toString().trim())) {
+//
+//            User nUser = new User();
+//            nUser.setEmail(registerBinding.textInputEditTextEmail.getText().toString().trim());
+//            nUser.setName(registerBinding.textInputEditTextName.getText().toString().trim());
+//            nUser.setPassword(registerBinding.textInputEditTextPassword.getText().toString().trim());
+//            userDao.addUser(nUser);
+//
+//            // Snack Bar to show success message that record saved successfully
+//            Snackbar.make(registerBinding.nestedScrollView, getString(R.string.success_message), Snackbar.LENGTH_LONG).show();
+//            emptyInputEditText();
+//
+//
+//        } else {
+//            // Snack Bar to show error message that record already exists
+//            Snackbar.make(registerBinding.nestedScrollView, getString(R.string.error_email_exists), Snackbar.LENGTH_LONG).show();
+//        }
 
 
     }

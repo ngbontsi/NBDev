@@ -1,11 +1,17 @@
 package development.ngbontsi.com.model;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+
 /**
  * Created by nbontsi on 2017/06/07.
  */
-
+@Entity(tableName = "event_status")
 public class EventStatus {
+    @PrimaryKey(autoGenerate = true)
     private int event_status_id;
+    @ColumnInfo(name = "description")
     private String event_description;
 
     public int getEvent_status_id() {

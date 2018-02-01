@@ -22,7 +22,7 @@ public class FragmentPresenterImpl implements FragmentPresenter {
     @Override
     public void loadData(String screen) {
         try {
-           fragmentView.onLoadData(eventModule.getAll());
+//           fragmentView.onLoadData(eventModule.getAll());
         }catch (Exception e){
             e.printStackTrace();
         }

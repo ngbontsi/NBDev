@@ -2,8 +2,7 @@ package development.ngbontsi.com.util;
 
 import android.content.Context;
 
-import development.ngbontsi.com.database.AddressDAO;
-import development.ngbontsi.com.database.CommercialDAO;
+import development.ngbontsi.com.database.AddressDatabase;
 import development.ngbontsi.com.model.Address;
 
 /**
@@ -13,7 +12,7 @@ import development.ngbontsi.com.model.Address;
 public class CreateAddress {
 
     private Context context;
-    private AddressDAO addressDAO;
+    private AddressDatabase addressDAO;
     private final String line_1="line_1";
     private final String line_2="line_2";
     private final String line_3="line_3";
@@ -23,7 +22,7 @@ public class CreateAddress {
     private int[] postalCode = new int[]{1020,5864,7525,5881,5008,6004};
     public CreateAddress(Context context){
         this.context = context;
-        addressDAO = new AddressDAO(context);
+        addressDAO = new AddressDatabase(context);
 
     }
     public void create(){

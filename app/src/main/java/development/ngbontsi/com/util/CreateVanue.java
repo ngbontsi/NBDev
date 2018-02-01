@@ -2,10 +2,7 @@ package development.ngbontsi.com.util;
 
 import android.content.Context;
 
-import development.ngbontsi.com.database.EventTypeDAO;
-import development.ngbontsi.com.database.VenueDAO;
-import development.ngbontsi.com.model.Address;
-import development.ngbontsi.com.model.EventType;
+import development.ngbontsi.com.database.VenueDatabase;
 import development.ngbontsi.com.model.Venue;
 
 /**
@@ -15,11 +12,11 @@ import development.ngbontsi.com.model.Venue;
 public class CreateVanue {
 
     private Context context;
-    private VenueDAO venueDAO;
+    private VenueDatabase venueDAO;
     private String[] names = new String[]{"Music","Wedding","Perfomance","soccer","rugby"};
     public CreateVanue(Context context){
         this.context = context;
-        venueDAO = new VenueDAO(context);
+        venueDAO = new VenueDatabase(context);
 
     }
     public void create(){

@@ -1,20 +1,29 @@
 package development.ngbontsi.com.model;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
 /**
  * Created by nbontsi on 2017/06/07.
  */
-
+@Entity(tableName = "address")
 public class Address {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     private int address_id;
+    @ColumnInfo(name = "city")
     private String city;
+    @ColumnInfo(name = "street")
     private String street;
+    @ColumnInfo(name = "line_1")
     private String line_1;
+    @ColumnInfo(name = "line_2")
     private String line_2;
+    @ColumnInfo(name = "line_3")
     private String line_3;
+    @ColumnInfo(name = "line_4")
     private String line_4;
+    @ColumnInfo(name = "postal_code")
     private int postal_code;
 
 

@@ -1,13 +1,21 @@
 package development.ngbontsi.com.model;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+
 /**
  * Created by nbontsi on 2017/06/07.
  */
-
+@Entity(tableName = "organizer")
 public class Organizer {
+    @PrimaryKey(autoGenerate = true)
     private int organizer_id;
+    @ColumnInfo(name = "organizer_name")
     private String organizer_name;
+    @ColumnInfo(name = "organizer_email")
     private String organizer_email;
+    @ColumnInfo(name = "user_id")
     private int user_id;
 
     public int getOrganizer_id() {

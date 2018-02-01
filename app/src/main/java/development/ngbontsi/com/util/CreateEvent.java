@@ -2,14 +2,16 @@ package development.ngbontsi.com.util;
 
 import android.content.Context;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-import development.ngbontsi.com.database.CommercialDAO;
-import development.ngbontsi.com.database.EventDAO;
-import development.ngbontsi.com.database.EventStatusDAO;
-import development.ngbontsi.com.database.EventTypeDAO;
-import development.ngbontsi.com.database.OrganizerDAO;
-import development.ngbontsi.com.database.VenueDAO;
+import development.ngbontsi.com.database.CommercialDatabase;
+import development.ngbontsi.com.database.EventDatabase;
+import development.ngbontsi.com.database.EventStatusDatabase;
+import development.ngbontsi.com.database.EventTypeDatabase;
+import development.ngbontsi.com.database.OrganizerDatabase;
+import development.ngbontsi.com.database.VenueDatabase;
 import development.ngbontsi.com.model.Commercial;
 import development.ngbontsi.com.model.Event;
 import development.ngbontsi.com.model.EventStatus;
@@ -24,28 +26,28 @@ import development.ngbontsi.com.model.Venue;
 public class CreateEvent {
 
     private Context context;
-    private EventDAO eventDAO;
-    private EventStatusDAO eventStatusDAO;
-    private EventTypeDAO eventTypeDAO;
-    private CommercialDAO commercialDAO;
-    private OrganizerDAO organizerDAO;
-    private VenueDAO venueDAO;
+    private EventDatabase eventDAO;
+    private EventStatusDatabase eventStatusDAO;
+    private EventTypeDatabase eventTypeDAO;
+    private CommercialDatabase commercialDAO;
+    private OrganizerDatabase organizerDAO;
+    private VenueDatabase venueDAO;
       public CreateEvent(Context context){
         this.context = context;
-        eventDAO = new EventDAO(context);
-        eventStatusDAO = new EventStatusDAO(context);
-        eventTypeDAO = new EventTypeDAO(context);
-        commercialDAO = new CommercialDAO(context);
-        organizerDAO=new OrganizerDAO(context);
-        venueDAO = new VenueDAO(context);
+        eventDAO = new EventDatabase(context);
+        eventStatusDAO = new EventStatusDatabase(context);
+        eventTypeDAO = new EventTypeDatabase(context);
+        commercialDAO = new CommercialDatabase(context);
+        organizerDAO=new OrganizerDatabase(context);
+        venueDAO = new VenueDatabase(context);
     }
     public void create()throws Exception{
 
-        List<Organizer> organizers = organizerDAO.getAllOrganizers();
-        List<EventStatus> statuses= eventStatusDAO.getAllEventStatus();
-        List<EventType> eventTypes = eventTypeDAO.getAllEventTypes();
-        List<Commercial> commercials= commercialDAO.getAllCommercials();
-        List<Venue> venues = venueDAO.getAllVenues();
+        List<Organizer> organizers = new ArrayList<>();
+        List<EventStatus> statuses= new ArrayList<>();
+        List<EventType> eventTypes = new ArrayList<>();
+        List<Commercial> commercials= new ArrayList<>();
+        List<Venue> venues = new ArrayList<>();
         for (Organizer organizer:organizers)
         {
             Event event = new Event();
@@ -55,9 +57,9 @@ public class CreateEvent {
             event.setOrganizer_id(organizer.getOrganizer_id());
             event.setVenue_id(venues.get(0).getVenue_id());
             event.setName(organizer.getOrganizer_name());
-            event.setStartDate(DateUtills.today());
-            event.setEndDate(DateUtills.datePlus(31));
-            eventDAO.addEvent(event);
+//            event.setStartDate("");
+//            event.setEndDate("");
+//            eventDAO.addEvent(event);
         }
 
     }
