@@ -13,6 +13,7 @@ import development.ngbontsi.com.interfaces.ContactDAO;
 import development.ngbontsi.com.interfaces.EventDAO;
 import development.ngbontsi.com.interfaces.EventStatusDAO;
 import development.ngbontsi.com.interfaces.EventTypeDAO;
+import development.ngbontsi.com.interfaces.LoginDAO;
 import development.ngbontsi.com.interfaces.OrganizerDAO;
 import development.ngbontsi.com.interfaces.UserDAO;
 import development.ngbontsi.com.interfaces.VenueDAO;
@@ -23,12 +24,13 @@ import development.ngbontsi.com.model.Contact;
 import development.ngbontsi.com.model.Event;
 import development.ngbontsi.com.model.EventStatus;
 import development.ngbontsi.com.model.EventType;
+import development.ngbontsi.com.model.Login;
 import development.ngbontsi.com.model.Organizer;
 import development.ngbontsi.com.model.User;
 import development.ngbontsi.com.model.Venue;
 import development.ngbontsi.com.model.VenueFacility;
 import development.ngbontsi.com.util.DatabaseCreation;
-@Database(entities = {User.class, Address.class, Commercial.class, Contact.class, Event.class, EventType.class, Organizer.class, Venue.class, EventStatus.class, VenueFacility.class},
+@Database(entities = {User.class, Address.class, Commercial.class, Contact.class, Event.class, EventType.class, Organizer.class, Venue.class, EventStatus.class, VenueFacility.class, Login.class},
 version = 1)
 public abstract class ApplicationDatabase extends RoomDatabase {
 
@@ -44,6 +46,7 @@ public abstract class ApplicationDatabase extends RoomDatabase {
 	public abstract OrganizerDAO organizerDAO();
 	public abstract VenueDAO venueDAO();
 	public abstract VenueFacilityDAO venueFacilityDAO();
+	public abstract LoginDAO loginDAO();
 
 	public static ApplicationDatabase getAppDatabase(Context context){
 		if (INSTANCE == null) {

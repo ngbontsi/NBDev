@@ -19,6 +19,8 @@ public interface CommercialDAO {
     List<Commercial> getCommercials();
     @Query("SELECT * FROM commercial where description LIKE  :description")
     Commercial findByDescription(String description);
+    @Query("select * from commercial where event_commercial_id like :event_commercial_id")
+    Commercial findById(int event_commercial_id);
 
     @Query("SELECT COUNT(*) from commercial")
     int countCommercials();

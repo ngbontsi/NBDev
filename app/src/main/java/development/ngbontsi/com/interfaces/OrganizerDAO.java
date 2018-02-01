@@ -20,6 +20,9 @@ public interface OrganizerDAO {
     @Query("SELECT * FROM organizer where organizer_name LIKE  :organizer_name")
     Organizer findByDescription(String organizer_name);
 
+    @Query("select * from organizer where organizer_id like :organizer_id")
+    Organizer findById(int organizer_id);
+
     @Query("SELECT COUNT(*) from organizer")
     int countOrganizers();
 

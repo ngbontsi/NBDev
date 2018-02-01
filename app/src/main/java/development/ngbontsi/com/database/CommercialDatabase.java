@@ -5,6 +5,7 @@ import android.content.Context;
 
 import java.util.List;
 
+import development.ngbontsi.com.interfaces.CommercialDAO;
 import development.ngbontsi.com.model.Commercial;
 
 
@@ -14,23 +15,23 @@ import development.ngbontsi.com.model.Commercial;
 
 public class CommercialDatabase {
 
-    private ApplicationDatabase database;
+    private CommercialDAO database;
     public CommercialDatabase(Context context){
-        database = ApplicationDatabase.getAppDatabase(context);
+        database = ApplicationDatabase.getAppDatabase(context).commercialDAO();
     }
 
     public Commercial addCommercial(Commercial commercial){
-        database.commercialDAO().insertAll(commercial);
+        database.insertAll(commercial);
         return commercial;
     }
 
 
     public Commercial getCommercial( String description){
-        return database.commercialDAO().findByDescription(description);
+        return database.findByDescription(description);
     }
 
     public List<Commercial> getCommercials(){
-        return database.commercialDAO().getCommercials();
+        return database.getCommercials();
     }
 
     protected void finalize(){
@@ -38,4 +39,7 @@ public class CommercialDatabase {
     }
 
 
+    public Commercial getById(int event_commercial_id) {
+        return database.findById(event_commercial_id);
+    }
 }

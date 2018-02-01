@@ -1,6 +1,6 @@
 package development.ngbontsi.com.presenter;
 
-import development.ngbontsi.com.module.EventModule;
+import development.ngbontsi.com.module.EventLayout;
 
 /**
  * Created by nbontsi on 2017/08/08.
@@ -9,5 +9,5 @@ import development.ngbontsi.com.module.EventModule;
 public interface FragmentPresenter {
 
     public void loadData(String screen);
-    public void ItemClicked(EventModule itemId);
+    public void ItemClicked(EventLayout itemId);
 }

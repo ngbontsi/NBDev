@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import development.ngbontsi.com.R;
-import development.ngbontsi.com.module.EventModule;
+import development.ngbontsi.com.module.EventLayout;
 
 /**
  * Created by nbontsi on 2017/07/25.
@@ -19,12 +19,12 @@ import development.ngbontsi.com.module.EventModule;
 
 public class FragmentAdapter extends RecyclerView.Adapter<FragmentAdapter.ViewHolder> {
     private Context context;
-    private List<EventModule> data = new ArrayList<EventModule>();
+    private List<EventLayout> data = new ArrayList<EventLayout>();
     FragmentAdapter(Context context){
         this.context = context;
     }
 
-    public void  setData(List<EventModule> data){
+    public void  setData(List<EventLayout> data){
         if(data !=null){
             this.data.clear();
             this.data.addAll(data);
@@ -47,9 +47,9 @@ public class FragmentAdapter extends RecyclerView.Adapter<FragmentAdapter.ViewHo
     public void onBindViewHolder(ViewHolder holder, int position) {
         try {
             holder.textViewEventName.setText(data.get(position).getName());
-            holder.textViewEventType.setText(data.get(position).getEvent_description());
-            holder.textViewEventCommercial.setText(data.get(position).getEvent_commercial_description());
-            holder.textViewEventOrganiser.setText(data.get(position).getOrganizer_name());
+            holder.textViewEventType.setText(data.get(position).getType());
+            holder.textViewEventCommercial.setText(data.get(position).getCommercial());
+            holder.textViewEventOrganiser.setText(data.get(position).getOrganizer());
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

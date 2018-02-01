@@ -1,23 +1,19 @@
 package development.ngbontsi.com.adapter;
 
 import android.content.Context;
-import android.databinding.DataBindingUtil;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import development.ngbontsi.com.R;
-import development.ngbontsi.com.module.EventModule;
+import development.ngbontsi.com.module.EventLayout;
 import development.ngbontsi.com.presenter.FragmentPresenter;
 
 /**
@@ -26,12 +22,12 @@ import development.ngbontsi.com.presenter.FragmentPresenter;
 
 public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.UserViewHolder> implements Filterable {
 
-    private List<EventModule> eventModules= new ArrayList<EventModule>();
+    private List<EventLayout> eventModules= new ArrayList<EventLayout>();
     private FragmentPresenter fragmentPresenter;
     private Context context;
-    private List<EventModule> filteredList = new ArrayList<EventModule>();
+    private List<EventLayout> filteredList = new ArrayList<EventLayout>();
 
-    public SearchAdapter(FragmentPresenter fragmentPresenter, List<EventModule> eventModules){
+    public SearchAdapter(FragmentPresenter fragmentPresenter, List<EventLayout> eventModules){
         this.context= context;
         this.eventModules = eventModules;
         this.filteredList = eventModules;
@@ -50,10 +46,10 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.UserViewHo
     @Override
     public void onBindViewHolder(UserViewHolder holder, final int position) {
         holder.textViewEeventName.setText(eventModules.get(position).getName());
-        holder.textViewEeventStatus.setText(eventModules.get(position).getEvent_description());
-        holder.textViewEventType.setText(eventModules.get(position).getEvent_type_description());
-        holder.textViewEventOrganizer.setText(eventModules.get(position).getOrganizer_name());
-        holder.textViewEventCommercial.setText(eventModules.get(position).getEvent_commercial_description());
+        holder.textViewEeventStatus.setText(eventModules.get(position).getStatus());
+        holder.textViewEventType.setText(eventModules.get(position).getType());
+        holder.textViewEventOrganizer.setText(eventModules.get(position).getOrganizer());
+        holder.textViewEventCommercial.setText(eventModules.get(position).getCommercial());
         holder.itemView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -82,8 +78,8 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.UserViewHo
                 if(charString.isEmpty()){
 filteredList = eventModules;
                 }else {
-                    List<EventModule> filterList = new ArrayList<EventModule>();
-                    for (EventModule eventModule:eventModules) {
+                    List<EventLayout> filterList = new ArrayList<EventLayout>();
+                    for (EventLayout eventModule:eventModules) {
                         if(eventModule.getName().toLowerCase().contains(charString)){
                             filterList.add(eventModule);
                         }
@@ -100,14 +96,14 @@ filteredList = eventModules;
             @Override
             protected void publishResults(CharSequence constraint, FilterResults results) {
 
-                filteredList =(ArrayList<EventModule>)results.values;
+                filteredList =(ArrayList<EventLayout>)results.values;
                 notifyDataSetChanged();
 
             }
         };
     }
 
-    public void setDataList(List<EventModule> dataList) {
+    public void setDataList(List<EventLayout> dataList) {
         if(dataList != null && dataList.size()>0){
             this.eventModules.clear();
             this.eventModules.addAll(dataList);

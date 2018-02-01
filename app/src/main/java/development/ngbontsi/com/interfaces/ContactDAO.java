@@ -19,6 +19,8 @@ public interface ContactDAO {
     List<Contact> getContacts();
     @Query("SELECT * FROM contact where organizer_id LIKE  :organizer_id")
     Contact findByUserId(int organizer_id);
+    @Query("select * from contact where contact_id like :contact_id")
+    Contact findById(int contact_id);
 
     @Query("SELECT COUNT(*) from contact")
     int countContacts();

@@ -5,6 +5,7 @@ import android.content.Context;
 
 import java.util.List;
 
+import development.ngbontsi.com.interfaces.EventStatusDAO;
 import development.ngbontsi.com.model.EventStatus;
 import development.ngbontsi.com.model.EventType;
 
@@ -15,23 +16,23 @@ import development.ngbontsi.com.model.EventType;
 public class EventStatusDatabase {
 
 
-    private ApplicationDatabase database;
+    private EventStatusDAO database;
     public EventStatusDatabase(Context context){
-        database = ApplicationDatabase.getAppDatabase(context);
+        database = ApplicationDatabase.getAppDatabase(context).eventStatusDAO();
     }
 
     public EventStatus addEventStatus(EventStatus eventStatus){
-        database.eventStatusDAO().insertAll(eventStatus);
+        database.insertAll(eventStatus);
         return eventStatus;
     }
 
 
     public EventStatus getEventStatus( String description){
-        return database.eventStatusDAO().findByDescription(description);
+        return database.findByDescription(description);
     }
 
     public List<EventStatus> getEventStatuses(){
-        return database.eventStatusDAO().getEventStatuses();
+        return database.getEventStatuses();
     }
 
     protected void finalize(){
@@ -39,5 +40,7 @@ public class EventStatusDatabase {
     }
 
 
-
+    public EventStatus getById(int event_status_id) {
+        return database.findById(event_status_id);
+    }
 }

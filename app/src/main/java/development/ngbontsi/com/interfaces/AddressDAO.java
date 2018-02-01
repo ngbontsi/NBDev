@@ -20,6 +20,9 @@ public interface AddressDAO {
     @Query("SELECT * FROM address where street LIKE  :street")
     Address findByStreet(String street);
 
+    @Query("select * from address where address_id like :address_id")
+    Address findById(int address_id);
+
     @Query("SELECT COUNT(*) from address")
     int countAddresses();
 

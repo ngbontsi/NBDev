@@ -1,9 +1,7 @@
 package development.ngbontsi.com.presenter;
 
-import android.content.Context;
-
 import development.ngbontsi.com.interfaces.FragmentView;
-import development.ngbontsi.com.module.EventModule;
+import development.ngbontsi.com.module.EventLayout;
 
 /**
  * Created by nbontsi on 2017/07/26.
@@ -13,10 +11,10 @@ public class FragmentPresenterImpl implements FragmentPresenter {
 
 
     private FragmentView fragmentView;
-    private EventModule eventModule;
+    private EventLayout eventModule;
             public FragmentPresenterImpl(FragmentView fragmentView){
                 this.fragmentView= fragmentView;
-                eventModule = new EventModule(fragmentView.getActivity());
+                eventModule = new EventLayout();
             }
 
     @Override
@@ -31,7 +29,7 @@ public class FragmentPresenterImpl implements FragmentPresenter {
     }
 
     @Override
-    public void ItemClicked(EventModule itemId) {
+    public void ItemClicked(EventLayout itemId) {
         fragmentView.onClickItem(itemId);
     }
 }

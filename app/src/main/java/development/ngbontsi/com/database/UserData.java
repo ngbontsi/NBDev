@@ -9,9 +9,9 @@ import development.ngbontsi.com.model.User;
 /**
  * Created by nbontsi on 2017/06/08.
  */
-public class UserDatabases  {
+public class UserData {
 private ApplicationDatabase database;
-    public UserDatabases(Context context){
+    public UserData(Context context){
         database = ApplicationDatabase.getAppDatabase(context);
     }
 
@@ -31,5 +31,9 @@ private ApplicationDatabase database;
 
     protected void finalize(){
         ApplicationDatabase.destroyInstance();
+    }
+
+    public boolean userExist(String firstname, String lastname) {
+        return  getUser(firstname,lastname) != null;
     }
 }

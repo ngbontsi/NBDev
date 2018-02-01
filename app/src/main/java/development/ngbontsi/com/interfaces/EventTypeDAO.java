@@ -20,6 +20,9 @@ public interface EventTypeDAO {
     @Query("SELECT * FROM event_type where description LIKE  :description")
     EventType findByDescription(String description);
 
+    @Query("select * from event_type where event_type_id like :event_type_id")
+    EventType findById(int event_type_id);
+
     @Query("SELECT COUNT(*) from event_type")
     int countEventStatuses();
 

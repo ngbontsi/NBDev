@@ -18,7 +18,7 @@ import development.ngbontsi.com.adapter.UsersRecyclerAdapter;
 import development.ngbontsi.com.constants.ApplicationConstants;
 import development.ngbontsi.com.event.EventActivity;
 import development.ngbontsi.com.interfaces.FragmentView;
-import development.ngbontsi.com.model.Event;
+import development.ngbontsi.com.module.EventLayout;
 import development.ngbontsi.com.module.EventModule;
 import development.ngbontsi.com.presenter.FragmentPresenter;
 import development.ngbontsi.com.presenter.FragmentPresenterImpl;
@@ -73,7 +73,7 @@ eventModule = new EventModule(getActivity());
             fragmentPresenter.loadData(this.name);
         }else if(this.name.equals(ApplicationConstants.Search_Event.getValue())){
             try{
-//                searchAdapter = new SearchAdapter(fragmentPresenter,eventModule.getAll());
+                searchAdapter = new SearchAdapter(fragmentPresenter,eventModule.getAll());
                 recyclerView.setAdapter(searchAdapter);
             }catch (Exception e){
                 e.printStackTrace();
@@ -83,13 +83,13 @@ eventModule = new EventModule(getActivity());
     }
 
     @Override
-    public void onLoadData(List<EventModule> dataList) {
+    public void onLoadData(List<EventLayout> dataList) {
         usersRecyclerAdapter.setDataList(dataList);
 
     }
 
     @Override
-    public void onClickItem(EventModule data) {
+    public void onClickItem(EventLayout data) {
         Intent intent = new Intent(getActivity(),EventActivity.class);
         getActivity().startActivity(intent);
 

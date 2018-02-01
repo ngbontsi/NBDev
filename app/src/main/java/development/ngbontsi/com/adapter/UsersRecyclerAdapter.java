@@ -13,12 +13,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import development.ngbontsi.com.R;
-import development.ngbontsi.com.module.EventModule;
+import development.ngbontsi.com.module.EventLayout;
 import development.ngbontsi.com.presenter.FragmentPresenter;
 
 public class UsersRecyclerAdapter extends RecyclerView.Adapter<UsersRecyclerAdapter.UserViewHolder>   {
 
-	private List<EventModule> eventModules= new ArrayList<EventModule>();
+	private List<EventLayout> eventModules= new ArrayList<EventLayout>();
 	private FragmentPresenter fragmentPresenter;
 	private Context context;
 	public UsersRecyclerAdapter(FragmentPresenter fragmentPresenter,Context context)
@@ -38,10 +38,10 @@ public class UsersRecyclerAdapter extends RecyclerView.Adapter<UsersRecyclerAdap
 	@Override
 	public void onBindViewHolder(UserViewHolder holder, final int position) {
 		holder.textViewEeventName.setText(eventModules.get(position).getName());
-		holder.textViewEeventStatus.setText(eventModules.get(position).getEvent_description());
-		holder.textViewEventType.setText(eventModules.get(position).getEvent_type_description());
-		holder.textViewEventOrganizer.setText(eventModules.get(position).getOrganizer_name());
-		holder.textViewEventCommercial.setText(eventModules.get(position).getEvent_commercial_description());
+		holder.textViewEeventStatus.setText(eventModules.get(position).getStatus());
+		holder.textViewEventType.setText(eventModules.get(position).getType());
+		holder.textViewEventOrganizer.setText(eventModules.get(position).getOrganizer());
+		holder.textViewEventCommercial.setText(eventModules.get(position).getCommercial());
 		holder.itemView.setOnClickListener(new View.OnClickListener(){
 			@Override
 			public void onClick(View v) {
@@ -60,7 +60,7 @@ public class UsersRecyclerAdapter extends RecyclerView.Adapter<UsersRecyclerAdap
 		return new UserViewHolder(itemView);
 	}
 
-	public void setDataList(List<EventModule> dataList) {
+	public void setDataList(List<EventLayout> dataList) {
 		if(dataList != null && dataList.size()>0){
 			this.eventModules.clear();
 			this.eventModules.addAll(dataList);

@@ -5,6 +5,7 @@ import android.content.Context;
 
 import java.util.List;
 
+import development.ngbontsi.com.interfaces.EventTypeDAO;
 import development.ngbontsi.com.model.EventType;
 import development.ngbontsi.com.model.Organizer;
 
@@ -14,23 +15,23 @@ import development.ngbontsi.com.model.Organizer;
 
 public class EventTypeDatabase {
 
-    private ApplicationDatabase database;
+    private EventTypeDAO database;
     public EventTypeDatabase(Context context){
-        database = ApplicationDatabase.getAppDatabase(context);
+        database = ApplicationDatabase.getAppDatabase(context).eventTypeDAO();
     }
 
     public EventType addEventType(EventType eventType){
-        database.eventTypeDAO().insertAll(eventType);
+        database.insertAll(eventType);
         return eventType;
     }
 
 
     public EventType getEventType( String description){
-        return database.eventTypeDAO().findByDescription(description);
+        return database.findByDescription(description);
     }
 
     public List<EventType> getOrganizers(){
-        return database.eventTypeDAO().getEventStatuses();
+        return database.getEventStatuses();
     }
 
     protected void finalize(){
@@ -38,5 +39,7 @@ public class EventTypeDatabase {
     }
 
 
-
+    public EventType getById(int event_type_id) {
+        return database.findById(event_type_id);
+    }
 }

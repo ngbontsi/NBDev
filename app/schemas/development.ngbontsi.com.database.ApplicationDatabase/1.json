@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "06fcc889cc98203e33fffc1eaa52bebc",
+    "identityHash": "727055b6382b4ce8cb1dce5d36cfdd53",
     "entities": [
       {
         "tableName": "users",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `first_name` TEXT, `last_name` TEXT, `email` TEXT, `password` TEXT)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `first_name` TEXT, `last_name` TEXT, `address_id` INTEGER, `email` TEXT, `password` TEXT)",
         "fields": [
           {
             "fieldPath": "id",
@@ -22,6 +22,11 @@
             "fieldPath": "lastName",
             "columnName": "last_name",
             "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "addressid",
+            "columnName": "address_id",
+            "affinity": "INTEGER"
           },
           {
             "fieldPath": "email",
@@ -358,11 +363,45 @@
         },
         "indices": [],
         "foreignKeys": []
+      },
+      {
+        "tableName": "login",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `username` TEXT, `password` TEXT, `user_role` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "username",
+            "columnName": "username",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "password",
+            "columnName": "password",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "userrole",
+            "columnName": "user_role",
+            "affinity": "TEXT"
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
       }
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"06fcc889cc98203e33fffc1eaa52bebc\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"727055b6382b4ce8cb1dce5d36cfdd53\")"
     ]
   }
 }

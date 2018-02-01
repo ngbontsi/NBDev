@@ -12,11 +12,11 @@ import development.ngbontsi.com.model.Commercial;
  * Created by nbontsi on 2017/06/08.
  */
 
-public class AddressDatabase {
+public class AddressData {
 
 
     private ApplicationDatabase database;
-    public AddressDatabase(Context context){
+    public AddressData(Context context){
         database = ApplicationDatabase.getAppDatabase(context);
     }
 
@@ -37,6 +37,8 @@ public class AddressDatabase {
     protected void finalize(){
         ApplicationDatabase.destroyInstance();
     }
+
+
 
 
 }

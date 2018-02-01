@@ -5,6 +5,7 @@ import android.content.Context;
 
 import java.util.List;
 
+import development.ngbontsi.com.interfaces.VenueDAO;
 import development.ngbontsi.com.model.User;
 import development.ngbontsi.com.model.Venue;
 
@@ -14,27 +15,31 @@ import development.ngbontsi.com.model.Venue;
 
 public class VenueDatabase {
 
-    private ApplicationDatabase database;
+    private VenueDAO database;
 
     public VenueDatabase(Context context){
-        database = ApplicationDatabase.getAppDatabase(context);
+        database = ApplicationDatabase.getAppDatabase(context).venueDAO();
     }
 
     public Venue addVenue(Venue venue){
-        database.venueDAO().insertAll(venue);
+        database.insertAll(venue);
         return venue;
     }
 
 
     public Venue getVenue( String description){
-        return database.venueDAO().findByDescription(description);
+        return database.findByDescription(description);
     }
 
     public List<Venue> getVenues(){
-        return database.venueDAO().getVenues();
+        return database.getVenues();
     }
 
     protected void finalize(){
         ApplicationDatabase.destroyInstance();
+    }
+
+    public Venue getById(int venue_id) {
+        return database.findById(venue_id);
     }
 }

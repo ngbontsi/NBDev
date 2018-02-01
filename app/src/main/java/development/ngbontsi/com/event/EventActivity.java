@@ -8,13 +8,13 @@ import development.ngbontsi.com.R;
 import development.ngbontsi.com.constants.ModelConstants;
 import development.ngbontsi.com.database.EventDatabase;
 import development.ngbontsi.com.model.Event;
-import development.ngbontsi.com.module.EventModule;
+import development.ngbontsi.com.module.EventLayout;
 
 public class EventActivity extends AppCompatActivity {
 
     private EventDatabase eventDAO;
     private Event event;
-    private EventModule eventModule;
+    private EventLayout eventModule;
     private final AppCompatActivity activity = EventActivity.this;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,7 @@ public class EventActivity extends AppCompatActivity {
     private void initObjects() {
         eventDAO = new EventDatabase(activity);
         Intent startIntent = getIntent();
-        eventModule = (EventModule) startIntent.getSerializableExtra(ModelConstants.User.toString());
+        eventModule = (EventLayout) startIntent.getSerializableExtra(ModelConstants.User.toString());
     }
 
 

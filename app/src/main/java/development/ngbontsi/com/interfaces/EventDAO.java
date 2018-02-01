@@ -20,6 +20,9 @@ public interface EventDAO {
     @Query("SELECT * FROM event where organizer_id LIKE  :organizer_id")
     Event findByUserId(int organizer_id);
 
+    @Query("select * from event where event_id like :event_id")
+    Event findById(int event_id);
+
     @Query("SELECT COUNT(*) from event")
     int countEvents();
 

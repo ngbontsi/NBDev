@@ -2,7 +2,6 @@ package development.ngbontsi.com.model;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
 import java.io.Serializable;
@@ -16,6 +15,17 @@ public class User implements Serializable{
 
 	@ColumnInfo(name="last_name")
 	private String lastName;
+
+	public int getAddressid() {
+		return addressid;
+	}
+
+	public void setAddressid(int addressid) {
+		this.addressid = addressid;
+	}
+
+	@ColumnInfo(name = "address_id")
+	private int addressid;
 
 	public String getLastName() {
 		return lastName;

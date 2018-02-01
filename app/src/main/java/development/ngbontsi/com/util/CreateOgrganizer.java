@@ -26,7 +26,7 @@ public void create(){
      Organizer organizer = new Organizer();
       organizer.setOrganizer_name(names[i]);
       organizer.setOrganizer_email(emails[i]);
-//     organizerDAO.addUser(organizer);
+//     organizerDAO.addLogin(organizer);
     }
 
 }

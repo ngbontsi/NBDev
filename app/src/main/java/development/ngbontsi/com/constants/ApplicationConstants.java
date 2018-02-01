@@ -13,6 +13,9 @@ public enum ApplicationConstants {
     All_Events("All Evenets"),
     Search_Event("Search Evenets"),
     Notifications("Notification"),
+    Organizer_role("ORG"),
+    User_role("USER"),
+    Administration_role("ADMIN"),
     Mails("Mails");
 
     private String model;

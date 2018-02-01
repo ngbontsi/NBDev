@@ -1,5 +1,7 @@
 package development.ngbontsi.com.activities;
-
+import  static development.ngbontsi.com.constants.ApplicationConstants.Organizer_role;
+import  static development.ngbontsi.com.constants.ApplicationConstants.User_role;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -7,9 +9,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import development.ngbontsi.com.R;
 
+import development.ngbontsi.com.database.AddressData;
+import development.ngbontsi.com.database.LoginData;
+import development.ngbontsi.com.database.UserData;
 import development.ngbontsi.com.databinding.ActivityRegisterBinding;
+import development.ngbontsi.com.model.Address;
+import development.ngbontsi.com.model.Login;
 import development.ngbontsi.com.model.User;
-import development.ngbontsi.com.util.DatabaseCreation;
 import development.ngbontsi.com.util.InputValidation;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
@@ -17,9 +23,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     private InputValidation inputValidation;
 
-    private User user;
+
     private ActivityRegisterBinding registerBinding;
-    private DatabaseCreation databaseCreation;
+    private LoginData loginData;
+    private UserData userData;
+    private AddressData addressData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,9 +56,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
      */
     private void initObjects() {
         inputValidation = new InputValidation(activity);
-
-        databaseCreation = new DatabaseCreation(activity);
-        user = new User();
+        loginData = new LoginData(activity);
+        userData = new UserData(activity);
+        addressData = new AddressData(activity);
 
     }
 
@@ -65,7 +73,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
             case  R.id.appCompatButtonRegister:
                 postDataToSQLite();
-                createDummyDataToSQLite();
+
                 break;
 
             case R.id.appCompatTextViewLoginLink:
@@ -74,53 +82,115 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
-    private void createDummyDataToSQLite() {
-        try {
-            databaseCreation.createDataBase();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
 
-    }
 
     /**
      * This method is to validate the input text fields and post data to SQLite
      */
     private void postDataToSQLite() {
-        if (!inputValidation.isInputEditTextFilled(registerBinding.textInputEditTextName, registerBinding.textInputLayoutName, getString(R.string.error_message_name))) {
+        if (!inputValidation.isInputEditTextFilled(registerBinding.textInputEditTextName, registerBinding.textInputLayoutName, getString(R.string.error_message_mandotary))) {
             return;
         }
-        if (!inputValidation.isInputEditTextFilled(registerBinding.textInputEditTextEmail, registerBinding.textInputLayoutEmail, getString(R.string.error_message_email))) {
+        if (!inputValidation.isInputEditTextFilled(registerBinding.textInputEditTextEmail, registerBinding.textInputLayoutEmail, getString(R.string.error_message_mandotary))) {
             return;
         }
         if (!inputValidation.isInputEditTextEmail(registerBinding.textInputEditTextEmail, registerBinding.textInputLayoutEmail, getString(R.string.error_message_email))) {
             return;
         }
-        if (!inputValidation.isInputEditTextFilled(registerBinding.textInputEditTextPassword, registerBinding.textInputLayoutPassword, getString(R.string.error_message_password))) {
-            return;
-        }
-        if (!inputValidation.isInputEditTextMatches(registerBinding.textInputEditTextConfirmPassword,
-                registerBinding.textInputLayoutConfirmPassword, getString(R.string.error_password_match))) {
+        if (!inputValidation.isInputEditTextFilled(registerBinding.textInputEditTextPassword, registerBinding.textInputLayoutPassword, getString(R.string.error_message_mandotary))) {
             return;
         }
 
-//        if (!userDao.checkUser(registerBinding.textInputEditTextEmail.getText().toString().trim())) {
-//
-//            User nUser = new User();
-//            nUser.setEmail(registerBinding.textInputEditTextEmail.getText().toString().trim());
-//            nUser.setName(registerBinding.textInputEditTextName.getText().toString().trim());
-//            nUser.setPassword(registerBinding.textInputEditTextPassword.getText().toString().trim());
-//            userDao.addUser(nUser);
-//
-//            // Snack Bar to show success message that record saved successfully
-//            Snackbar.make(registerBinding.nestedScrollView, getString(R.string.success_message), Snackbar.LENGTH_LONG).show();
-//            emptyInputEditText();
-//
-//
-//        } else {
-//            // Snack Bar to show error message that record already exists
-//            Snackbar.make(registerBinding.nestedScrollView, getString(R.string.error_email_exists), Snackbar.LENGTH_LONG).show();
-//        }
+
+        if (!inputValidation.isInputEditTextFilled(registerBinding.textInputEditTextCity, registerBinding.textInputLayoutCity, getString(R.string.error_message_mandotary))) {
+            return;
+        }
+        if (!inputValidation.isInputEditTextFilled(registerBinding.textInputEditTextLine1, registerBinding.textInputLayoutLine1, getString(R.string.error_message_mandotary))) {
+            return;
+        }
+        if (!inputValidation.isInputEditTextFilled(registerBinding.textInputEditTextLine2, registerBinding.textInputLayoutLine2, getString(R.string.error_message_mandotary))) {
+            return;
+        }
+        if (!inputValidation.isInputEditTextFilled(registerBinding.textInputEditTextLine3, registerBinding.textInputLayoutLine3, getString(R.string.error_message_mandotary))) {
+            return;
+        }
+
+        if (!inputValidation.isInputEditTextFilled(registerBinding.textInputEditTextProvince, registerBinding.textInputLayoutProvince, getString(R.string.error_message_mandotary))) {
+            return;
+        }
+        if (!inputValidation.isInputEditTextFilled(registerBinding.textInputEditTextStreet, registerBinding.textInputLayoutStreet, getString(R.string.error_message_mandotary))) {
+            return;
+        }
+        if (!inputValidation.isInputEditTextFilled(registerBinding.textInputEditTextPostalCode, registerBinding.textInputLayoutPostalCode, getString(R.string.error_message_mandotary))) {
+            return;
+        }
+
+
+
+
+        if (!inputValidation.isInputEditTextMatches(registerBinding.textInputEditTextPassword,
+                registerBinding.textInputLayoutConfirmPassword, getString(R.string.error_password_match))) {
+            return;
+        }
+String username = registerBinding.textInputEditTextEmail.getText().toString().trim();
+        if (!loginData.userExist(username)) {
+
+            String firstName =registerBinding.textInputEditTextName.getText().toString().trim();
+            String password = registerBinding.textInputEditTextPassword.getText().toString().trim();
+            String city =registerBinding.textInputEditTextCity.getText().toString().trim();
+            String line1 = registerBinding.textInputEditTextLine1.getText().toString().trim();
+            String line2 = registerBinding.textInputEditTextLine2.getText().toString().trim();
+            String line3 = registerBinding.textInputEditTextLine3.getText().toString().trim();
+            String province = registerBinding.textInputEditTextProvince.getText().toString().trim();
+            String street = registerBinding.textInputEditTextStreet.getText().toString().trim();
+            String postalCode = registerBinding.textInputEditTextPostalCode.getText().toString().trim();
+
+            Address existingAddress = addressData.getCommercial(street);
+            User user = new User();
+            Login login = new Login();
+            if(existingAddress!= null) {
+                Address address = new Address();
+                address.setCity(city);
+                address.setLine_1(line1);
+                address.setLine_2(line2);
+                address.setLine_3(line3);
+                address.setLine_4(province);
+                address.setStreet(street);
+                address.setPostal_code(Integer.parseInt(postalCode));
+                address=addressData.addAddress(address);
+                user.setAddressid(address.getAddress_id());
+            }else
+                user.setAddressid(existingAddress.getAddress_id());
+            user.setEmail(username);
+            login.setUsername(username);
+            user.setName(firstName);
+            login.setPassword(password);
+            if(registerBinding.chkOrganiser.isChecked())
+            login.setUserrole(Organizer_role.getValue());
+            else
+                login.setUserrole(User_role.getValue());
+            user.setPassword(password);
+            userData.addUser(user);
+            loginData.addLogin(login);
+
+
+
+            registerBinding.chkOrganiser.setChecked(false);
+            registerBinding.chkUser.setChecked(true);
+
+
+            // Snack Bar to show success message that record saved successfully
+            Snackbar.make(registerBinding.nestedScrollView, getString(R.string.success_message), Snackbar.LENGTH_LONG).show();
+            emptyInputEditText();
+
+            Intent accountsIntent = new Intent(activity, LogInActivity.class);
+            startActivity(accountsIntent);
+
+
+        } else {
+            // Snack Bar to show error message that record already exists
+            Snackbar.make(registerBinding.nestedScrollView, getString(R.string.error_email_exists), Snackbar.LENGTH_LONG).show();
+        }
 
 
     }

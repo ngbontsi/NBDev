@@ -21,6 +21,7 @@
     <string name="error_message_email">Enter Valid Email</string>
     <string name="error_message_age">Enter Age</string>
     <string name="error_message_password">Enter Password</string>
+    <string name="error_message_mandotary">Field can not be empty</string>
     <string name="success_message">Registration Successful</string>
     <string name="selected_event">event selected</string>
     <string name="text_not_member">No account yet? Create one</string>

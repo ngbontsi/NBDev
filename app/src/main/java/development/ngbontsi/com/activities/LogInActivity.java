@@ -3,6 +3,8 @@ package development.ngbontsi.com.activities;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+
+
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -11,6 +13,8 @@ import android.view.View;
 import development.ngbontsi.com.R;
 
 
+import development.ngbontsi.com.database.LoginData;
+import development.ngbontsi.com.database.UserData;
 import development.ngbontsi.com.databinding.ActivityLogInBinding;
 import development.ngbontsi.com.util.InputValidation;
 
@@ -23,6 +27,8 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
     private InputValidation inputValidation;
 
    private ActivityLogInBinding logInBinding;
+   private LoginData userDatabases;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +64,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
     private void initObjects() {
 
         inputValidation = new InputValidation(activity);
+        userDatabases = new LoginData(activity);
 
     }
 
@@ -73,7 +80,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
                 verifyFromSQLite();
                 break;
             case R.id.textViewLinkRegister:
-                // Navigate to RegisterActivity
+
                 Intent intentRegister = new Intent(getApplicationContext(), RegisterActivity.class);
                 startActivity(intentRegister);
                 break;
@@ -94,18 +101,17 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
         if (!inputValidation.isInputEditTextFilled(logInBinding.textInputEditTextPassword, logInBinding.textInputLayoutPassword, getString(R.string.error_message_password)))
             return;
 
+String username =logInBinding.textInputEditTextEmail.getText().toString().trim();
+        if (userDatabases.userExist(username) ) {
 
-//        if (userDao.checkUser(logInBinding.textInputEditTextEmail.getText().toString().trim(), logInBinding.textInputEditTextPassword.getText().toString().trim())) {
-//
-//
-//            Intent accountsIntent = new Intent(activity, UsersListActivity.class);
-//            accountsIntent.putExtra("EMAIL", logInBinding.textInputEditTextEmail.getText().toString().trim());
-//            emptyInputEditText();
-//            startActivity(accountsIntent);
-//
-//
-//        } else
-//            // Snack Bar to show success message that record is wrong
-//            Snackbar.make(logInBinding.nestedScrollView, getString(R.string.error_valid_email_password), Snackbar.LENGTH_LONG).show();
+            Intent accountsIntent = new Intent(activity, UsersListActivity.class);
+            accountsIntent.putExtra("EMAIL", logInBinding.textInputEditTextEmail.getText().toString().trim());
+            emptyInputEditText();
+            startActivity(accountsIntent);
+
+
+        } else
+            // Snack Bar to show success message that record is wrong
+            Snackbar.make(logInBinding.nestedScrollView, getString(R.string.error_valid_email_password), Snackbar.LENGTH_LONG).show();
     }
 }

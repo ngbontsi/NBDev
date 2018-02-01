@@ -5,8 +5,9 @@ import android.content.Context;
 
 import java.util.List;
 
+import development.ngbontsi.com.interfaces.OrganizerDAO;
 import development.ngbontsi.com.model.Organizer;
-import development.ngbontsi.com.model.User;
+
 
 /**
  * Created by nbontsi on 2017/06/08.
@@ -14,23 +15,23 @@ import development.ngbontsi.com.model.User;
 
 public class OrganizerDatabase {
 
-    private ApplicationDatabase database;
+    private OrganizerDAO database;
     public OrganizerDatabase(Context context){
-        database = ApplicationDatabase.getAppDatabase(context);
+        database = ApplicationDatabase.getAppDatabase(context).organizerDAO();
     }
 
     public Organizer addOrganizer(Organizer organizer){
-        database.organizerDAO().insertAll(organizer);
+        database.insertAll(organizer);
         return organizer;
     }
 
 
     public Organizer getOrganizer( String description){
-        return database.organizerDAO().findByDescription(description);
+        return database.findByDescription(description);
     }
 
     public List<Organizer> getOrganizers(){
-        return database.organizerDAO().getOrganizers();
+        return database.getOrganizers();
     }
 
     protected void finalize(){
@@ -38,4 +39,7 @@ public class OrganizerDatabase {
     }
 
 
+    public Organizer getByEventId(int organizer_id) {
+        return  database.findById(organizer_id);
+    }
 }

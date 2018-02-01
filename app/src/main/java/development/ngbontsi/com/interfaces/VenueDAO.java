@@ -19,6 +19,8 @@ public interface VenueDAO {
     List<Venue> getVenues();
     @Query("SELECT * FROM venue where description LIKE  :description")
     Venue findByDescription(String description);
+    @Query("select * from venue where venue_id like :venue_id")
+    Venue findById(int venue_id);
 
     @Query("SELECT COUNT(*) from venue")
     int countVenues();

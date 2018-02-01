@@ -24,7 +24,7 @@ public class CreateEventCommercial {
         {
             Commercial organizer = new Commercial();
             organizer.setEvent_commercial_description(names[i]);
-//            commercialDAO.addUser(organizer);
+//            commercialDAO.addLogin(organizer);
         }
 
     }
