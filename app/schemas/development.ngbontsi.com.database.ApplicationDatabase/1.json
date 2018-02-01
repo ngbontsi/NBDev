@@ -1,0 +1,368 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "06fcc889cc98203e33fffc1eaa52bebc",
+    "entities": [
+      {
+        "tableName": "users",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `first_name` TEXT, `last_name` TEXT, `email` TEXT, `password` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "first_name",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "lastName",
+            "columnName": "last_name",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "email",
+            "columnName": "email",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "password",
+            "columnName": "password",
+            "affinity": "TEXT"
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "address",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`address_id` INTEGER PRIMARY KEY AUTOINCREMENT, `city` TEXT, `street` TEXT, `line_1` TEXT, `line_2` TEXT, `line_3` TEXT, `line_4` TEXT, `postal_code` INTEGER)",
+        "fields": [
+          {
+            "fieldPath": "address_id",
+            "columnName": "address_id",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "city",
+            "columnName": "city",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "street",
+            "columnName": "street",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "line_1",
+            "columnName": "line_1",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "line_2",
+            "columnName": "line_2",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "line_3",
+            "columnName": "line_3",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "line_4",
+            "columnName": "line_4",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "postal_code",
+            "columnName": "postal_code",
+            "affinity": "INTEGER"
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "address_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "commercial",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`event_commercial_id` INTEGER PRIMARY KEY AUTOINCREMENT, `description` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "event_commercial_id",
+            "columnName": "event_commercial_id",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "event_commercial_description",
+            "columnName": "description",
+            "affinity": "TEXT"
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "event_commercial_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "contact",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`contact_id` INTEGER PRIMARY KEY AUTOINCREMENT, `organizer_id` INTEGER, `address_id` INTEGER, `contact_number` TEXT, `web_site_address` TEXT, `other_details` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "contact_id",
+            "columnName": "contact_id",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "organizer_id",
+            "columnName": "organizer_id",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "address_id",
+            "columnName": "address_id",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "contact_number",
+            "columnName": "contact_number",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "web_site_address",
+            "columnName": "web_site_address",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "other_details",
+            "columnName": "other_details",
+            "affinity": "TEXT"
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "contact_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "event",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`event_id` INTEGER PRIMARY KEY AUTOINCREMENT, `event_status_id` INTEGER, `event_type_id` INTEGER, `event_commercial_id` INTEGER, `organizer_id` INTEGER, `venue_id` INTEGER, `description` TEXT, `start_date` TEXT, `end_date` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "event_id",
+            "columnName": "event_id",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "event_status_id",
+            "columnName": "event_status_id",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "event_type_id",
+            "columnName": "event_type_id",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "event_commercial_id",
+            "columnName": "event_commercial_id",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "organizer_id",
+            "columnName": "organizer_id",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "venue_id",
+            "columnName": "venue_id",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "description",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "startDate",
+            "columnName": "start_date",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "endDate",
+            "columnName": "end_date",
+            "affinity": "TEXT"
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "event_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "event_type",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`event_type_id` INTEGER PRIMARY KEY AUTOINCREMENT, `description` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "event_type_id",
+            "columnName": "event_type_id",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "event_type_description",
+            "columnName": "description",
+            "affinity": "TEXT"
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "event_type_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "organizer",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`organizer_id` INTEGER PRIMARY KEY AUTOINCREMENT, `organizer_name` TEXT, `organizer_email` TEXT, `user_id` INTEGER)",
+        "fields": [
+          {
+            "fieldPath": "organizer_id",
+            "columnName": "organizer_id",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "organizer_name",
+            "columnName": "organizer_name",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "organizer_email",
+            "columnName": "organizer_email",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "user_id",
+            "columnName": "user_id",
+            "affinity": "INTEGER"
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "organizer_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "venue",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`venue_id` INTEGER PRIMARY KEY AUTOINCREMENT, `description` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "venue_id",
+            "columnName": "venue_id",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "venue_name",
+            "columnName": "description",
+            "affinity": "TEXT"
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "venue_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "event_status",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`event_status_id` INTEGER PRIMARY KEY AUTOINCREMENT, `description` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "event_status_id",
+            "columnName": "event_status_id",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "event_description",
+            "columnName": "description",
+            "affinity": "TEXT"
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "event_status_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "venue_facility",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`facility_code` INTEGER PRIMARY KEY AUTOINCREMENT, `venue_id` INTEGER, `description` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "facility_code",
+            "columnName": "facility_code",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "venue_id",
+            "columnName": "venue_id",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "facility_description",
+            "columnName": "description",
+            "affinity": "TEXT"
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "facility_code"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"06fcc889cc98203e33fffc1eaa52bebc\")"
+    ]
+  }
+}
