@@ -84,7 +84,7 @@ verifyAdminRights();
         String username =adminLoginBinding.textInputEditTextAdminUser.getText().toString().trim();
         String password =adminLoginBinding.textInputEditTextAdminPassword.getText().toString().trim();
 
-        if(username.equalsIgnoreCase(Administration_user.getValue())||password.equalsIgnoreCase(Administration_role.getValue()))
+        if(!username.equalsIgnoreCase(Administration_user.getValue())||!password.equalsIgnoreCase(Administration_role.getValue()))
             Snackbar.make(adminLoginBinding.nestedScrollView, getString(R.string.not_admin_message), Snackbar.LENGTH_LONG).show();
         else{
 //            TODO  call admin screen
