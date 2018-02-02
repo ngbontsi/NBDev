@@ -50,7 +50,7 @@
     <string name="not_admin_message">Admin rights requeried</string>
     <string name="text_add_organiser">Add Organiser</string>
     <string name="text_add_facility">Add facility</string>
-    <string name="text_add_venue">AddVenue</string>
+    <string name="text_add_venue">Add Venue</string>
     <string name="text_add_contact">Add Contacts</string>
     <string name="text_add_commercial">Add Commercial</string>
     <string name="text_add_type">Add Event Type</string>
