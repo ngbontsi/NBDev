@@ -72,6 +72,13 @@
             android:layout_marginTop="40dp"
             android:background="@color/colorTextHint"
             android:text="@string/text_login" />
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/appCompatButtonAdminLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:background="@color/colorTextHint"
+            android:text="@string/text_login_admin" />
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/textViewLinkRegister"

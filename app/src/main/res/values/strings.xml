@@ -57,6 +57,7 @@
     <string name="text_add_status">Add Event Status</string>
     <string name="text_create_event">Create Event</string>
     <string name="text_add_user">Add User</string>
+    <string name="text_login_admin">Login as Admin</string>
 
 
 </resources>

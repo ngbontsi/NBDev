@@ -85,9 +85,15 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
                 Intent intentRegister = new Intent(getApplicationContext(), RegisterActivity.class);
                 startActivity(intentRegister);
                 break;
+            case R.id.appCompatButtonAdminLogin:
+                callAdminLogin();
         }
     }
 
+    private void callAdminLogin() {
+        Intent adminActivity = new Intent(activity,AdminLoginActivity.class);
+        startActivity(adminActivity);
+    }
 
 
     /**
