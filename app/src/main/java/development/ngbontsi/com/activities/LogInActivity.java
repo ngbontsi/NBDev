@@ -30,6 +30,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
    private LoginData userDatabases;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -101,17 +102,23 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
 
 
 String username =logInBinding.textInputEditTextUserName.getText().toString().trim();
+        String password =logInBinding.textInputEditTextPassword.getText().toString().trim();
         if (userDatabases.userExist(username) ) {
 
-            Intent accountsIntent = new Intent(activity, UsersListActivity.class);
-            accountsIntent.putExtra("USERNAME", logInBinding.textInputEditTextUserName.getText().toString().trim());
-            emptyInputEditText();
-            startActivity(accountsIntent);
+            if(userDatabases.userPassword(username).equals(password)){
+                Intent accountsIntent = new Intent(activity, UsersListActivity.class);
+                accountsIntent.putExtra("USERNAME", logInBinding.textInputEditTextUserName.getText().toString().trim());
+                emptyInputEditText();
+                startActivity(accountsIntent);
+            }else
+                inputValidation.displayError(logInBinding.textInputEditTextPassword,logInBinding.textInputLayoutPassword,getString(R.string.error_valid_email_password));
 
 
-        } else{
-            inputValidation.isInputEditTextFilled(logInBinding.textInputEditTextUserName, logInBinding.textInputLayoutUserName, getString(R.string.error_user_does_not_exist));
-            return;
-        }
+
+
+        } else
+            inputValidation.displayError(logInBinding.textInputEditTextUserName, logInBinding.textInputLayoutUserName, getString(R.string.error_user_does_not_exist));
+
+
     }
 }
