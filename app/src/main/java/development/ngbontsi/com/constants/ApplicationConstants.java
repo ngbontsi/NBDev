@@ -16,6 +16,7 @@ public enum ApplicationConstants {
     Organizer_role("ORG"),
     User_role("USER"),
     Administration_role("ADMIN"),
+    Administration_user("ngbontsi"),
     Mails("Mails");
 
     private String model;

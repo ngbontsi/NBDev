@@ -28,6 +28,8 @@
         <activity
             android:name=".event.EventActivity"
             android:screenOrientation="portrait" />
+        <activity android:name=".activities.AdminLoginActivity" />
+        <activity android:name=".activities.AdminHomeActivity"></activity>
     </application>
 
 </manifest>

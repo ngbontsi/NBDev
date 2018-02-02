@@ -47,6 +47,16 @@
     <string name="text_line_4">Province</string>
     <string name="text_postal_code">Code</string>
     <string name="no_data_available">No data available</string>
+    <string name="not_admin_message">Admin rights requeried</string>
+    <string name="text_add_organiser">Add Organiser</string>
+    <string name="text_add_facility">Add facility</string>
+    <string name="text_add_venue">AddVenue</string>
+    <string name="text_add_contact">Add Contacts</string>
+    <string name="text_add_commercial">Add Commercial</string>
+    <string name="text_add_type">Add Event Type</string>
+    <string name="text_add_status">Add Event Status</string>
+    <string name="text_create_event">Create Event</string>
+    <string name="text_add_user">Add User</string>
 
 
 </resources>

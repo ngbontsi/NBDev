@@ -24,11 +24,11 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
 
 
 
-    private InputValidation inputValidation;
+
 
    private ActivityLogInBinding logInBinding;
    private LoginData userDatabases;
-
+    private InputValidation inputValidation;
 
 
     @Override
