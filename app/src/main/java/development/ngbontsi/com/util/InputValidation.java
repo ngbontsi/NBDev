@@ -69,9 +69,26 @@ public class InputValidation {
 		return true;
 	}
 
-	public boolean isInputEditTextMatches(TextInputEditText textInputEditText2, TextInputLayout textInputLayout, String message) {
+	/**
+	 * method to check InputEditText filled .
+	 *
+	 * @param textInputEditText
+	 * @param textInputLayout
+	 * @param message
+	 * @return
+	 */
+	public boolean displayError( TextInputEditText textInputEditText,TextInputLayout textInputLayout, String message) {
 
-		if (!textInputEditText2.getText().toString().trim().contentEquals(textInputEditText2.getText().toString().trim())) {
+
+			textInputLayout.setError(message);
+			hideKeyboardFrom(textInputEditText);
+			return false;
+
+	}
+
+	public boolean isInputEditTextMatches(TextInputEditText textInputEditText1,TextInputEditText textInputEditText2, TextInputLayout textInputLayout, String message) {
+
+		if (!textInputEditText1.getText().toString().trim().contentEquals(textInputEditText2.getText().toString().trim())) {
 			textInputLayout.setError(message);
 			hideKeyboardFrom(textInputEditText2);
 			return false;

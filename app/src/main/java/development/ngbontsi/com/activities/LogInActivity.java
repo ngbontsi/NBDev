@@ -51,7 +51,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
      * This method is to empty all input edit text
      */
     private void emptyInputEditText() {
-        logInBinding.textInputEditTextEmail.setText(null);
+        logInBinding.textInputEditTextUserName.setText(null);
         logInBinding.textInputEditTextPassword.setText(null);
 
     }
@@ -94,24 +94,24 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
      */
     private void verifyFromSQLite() {
 
-        if (!inputValidation.isInputEditTextFilled(logInBinding.textInputEditTextEmail, logInBinding.textInputLayoutEmail, getString(R.string.error_message_email)))
+        if (!inputValidation.isInputEditTextFilled(logInBinding.textInputEditTextUserName, logInBinding.textInputLayoutUserName, getString(R.string.error_message_mandotary)))
             return;
-        if (!inputValidation.isInputEditTextEmail(logInBinding.textInputEditTextEmail, logInBinding.textInputLayoutEmail, getString(R.string.error_message_email)))
-            return;
-        if (!inputValidation.isInputEditTextFilled(logInBinding.textInputEditTextPassword, logInBinding.textInputLayoutPassword, getString(R.string.error_message_password)))
+        if (!inputValidation.isInputEditTextFilled(logInBinding.textInputEditTextPassword, logInBinding.textInputLayoutPassword, getString(R.string.error_message_mandotary)))
             return;
 
-String username =logInBinding.textInputEditTextEmail.getText().toString().trim();
+
+String username =logInBinding.textInputEditTextUserName.getText().toString().trim();
         if (userDatabases.userExist(username) ) {
 
             Intent accountsIntent = new Intent(activity, UsersListActivity.class);
-            accountsIntent.putExtra("EMAIL", logInBinding.textInputEditTextEmail.getText().toString().trim());
+            accountsIntent.putExtra("USERNAME", logInBinding.textInputEditTextUserName.getText().toString().trim());
             emptyInputEditText();
             startActivity(accountsIntent);
 
 
-        } else
-            // Snack Bar to show success message that record is wrong
-            Snackbar.make(logInBinding.nestedScrollView, getString(R.string.error_valid_email_password), Snackbar.LENGTH_LONG).show();
+        } else{
+            inputValidation.isInputEditTextFilled(logInBinding.textInputEditTextUserName, logInBinding.textInputLayoutUserName, getString(R.string.error_user_does_not_exist));
+            return;
+        }
     }
 }

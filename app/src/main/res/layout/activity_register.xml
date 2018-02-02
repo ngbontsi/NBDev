@@ -9,6 +9,9 @@
         <variable
             name="address"
             type="development.ngbontsi.com.model.Address"/>
+        <variable
+            name="login"
+            type="development.ngbontsi.com.model.Login"/>
     </data>
 <android.support.v4.widget.NestedScrollView
     android:id="@+id/nestedScrollView"
@@ -34,6 +37,23 @@
             android:src="@drawable/logo" />
 
         <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputLayoutUserName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/textInputEditTextUserName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_username"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textColor="@android:color/white"
+                android:text="@{login.username}"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
             android:id="@+id/textInputLayoutName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -49,6 +69,7 @@
                 android:textColor="@android:color/white"
                 android:text="@{user.name}"/>
         </android.support.design.widget.TextInputLayout>
+
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/textInputLayoutEmail"
@@ -206,24 +227,30 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/text_postal_code"
-                android:inputType="text"
+                android:inputType="number"
                 android:maxLines="1"
                 android:textColor="@android:color/white"
-                android:text="@{address.postal_code}"/>
+                android:text="@{String.valueOf(address.postal_code)}"/>
         </android.support.design.widget.TextInputLayout>
+    <RadioGroup
+        android:id="@+id/userRole"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-        <android.support.v7.widget.AppCompatCheckBox
+        <RadioButton
             android:id="@+id/chkOrganiser"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="false"
             android:text="@string/text_organiser"/>
-        <android.support.v7.widget.AppCompatCheckBox
+        <RadioButton
             android:id="@+id/chkUser"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
             android:text="@string/text_user"/>
+
+    </RadioGroup>
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/appCompatButtonRegister"
             android:layout_width="match_parent"

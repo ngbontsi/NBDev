@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -33,6 +34,7 @@ public class NavigationDrawer extends Fragment implements FragmentView {
     private UsersRecyclerAdapter usersRecyclerAdapter;
     private SearchAdapter searchAdapter;
     private RecyclerView recyclerView;
+    private TextView emptyDatalist;
     private EventModule eventModule;
     private FragmentPresenter fragmentPresenter;
 
@@ -58,6 +60,7 @@ public class NavigationDrawer extends Fragment implements FragmentView {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_drawer,container,false);
         recyclerView = (RecyclerView) view.findViewById(R.id.list_home);
+        emptyDatalist = (TextView) view.findViewById(R.id.emptyData);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         fragmentPresenter = new FragmentPresenterImpl(this);
@@ -67,13 +70,20 @@ public class NavigationDrawer extends Fragment implements FragmentView {
 
     private void  createAview(){
 eventModule = new EventModule(getActivity());
+List<EventLayout> eventLayouts = eventModule.getAll();
+
+if(eventLayouts.isEmpty()){
+    recyclerView.setVisibility(View.GONE);
+    emptyDatalist.setVisibility(View.VISIBLE);
+    return;
+}
         if(this.name.equals(ApplicationConstants.All_Events.getValue())){
             usersRecyclerAdapter = new UsersRecyclerAdapter(fragmentPresenter,getActivity());
             recyclerView.setAdapter(usersRecyclerAdapter);
             fragmentPresenter.loadData(this.name);
         }else if(this.name.equals(ApplicationConstants.Search_Event.getValue())){
             try{
-                searchAdapter = new SearchAdapter(fragmentPresenter,eventModule.getAll());
+                searchAdapter = new SearchAdapter(fragmentPresenter,eventLayouts);
                 recyclerView.setAdapter(searchAdapter);
             }catch (Exception e){
                 e.printStackTrace();

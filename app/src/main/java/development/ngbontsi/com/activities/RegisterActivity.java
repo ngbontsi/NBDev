@@ -91,6 +91,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         if (!inputValidation.isInputEditTextFilled(registerBinding.textInputEditTextName, registerBinding.textInputLayoutName, getString(R.string.error_message_mandotary))) {
             return;
         }
+        if (!inputValidation.isInputEditTextFilled(registerBinding.textInputEditTextUserName, registerBinding.textInputLayoutUserName, getString(R.string.error_message_mandotary))) {
+            return;
+        }
         if (!inputValidation.isInputEditTextFilled(registerBinding.textInputEditTextEmail, registerBinding.textInputLayoutEmail, getString(R.string.error_message_mandotary))) {
             return;
         }
@@ -128,13 +131,13 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
 
 
-        if (!inputValidation.isInputEditTextMatches(registerBinding.textInputEditTextPassword,
+        if (!inputValidation.isInputEditTextMatches(registerBinding.textInputEditTextConfirmPassword,registerBinding.textInputEditTextPassword,
                 registerBinding.textInputLayoutConfirmPassword, getString(R.string.error_password_match))) {
             return;
         }
-String username = registerBinding.textInputEditTextEmail.getText().toString().trim();
+String username = registerBinding.textInputEditTextUserName.getText().toString().trim();
         if (!loginData.userExist(username)) {
-
+String email =registerBinding.textInputEditTextEmail.getText().toString().trim();
             String firstName =registerBinding.textInputEditTextName.getText().toString().trim();
             String password = registerBinding.textInputEditTextPassword.getText().toString().trim();
             String city =registerBinding.textInputEditTextCity.getText().toString().trim();
@@ -148,7 +151,7 @@ String username = registerBinding.textInputEditTextEmail.getText().toString().tr
             Address existingAddress = addressData.getCommercial(street);
             User user = new User();
             Login login = new Login();
-            if(existingAddress!= null) {
+            if(existingAddress== null) {
                 Address address = new Address();
                 address.setCity(city);
                 address.setLine_1(line1);
@@ -161,7 +164,7 @@ String username = registerBinding.textInputEditTextEmail.getText().toString().tr
                 user.setAddressid(address.getAddress_id());
             }else
                 user.setAddressid(existingAddress.getAddress_id());
-            user.setEmail(username);
+            user.setEmail(email);
             login.setUsername(username);
             user.setName(firstName);
             login.setPassword(password);
@@ -172,11 +175,6 @@ String username = registerBinding.textInputEditTextEmail.getText().toString().tr
             user.setPassword(password);
             userData.addUser(user);
             loginData.addLogin(login);
-
-
-
-            registerBinding.chkOrganiser.setChecked(false);
-            registerBinding.chkUser.setChecked(true);
 
 
             // Snack Bar to show success message that record saved successfully

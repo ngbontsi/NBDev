@@ -4,6 +4,7 @@
     <string name="text_organiser">Organiser</string>
     <string name="text_user">User</string>
     <string name="hint_name">Name</string>
+    <string name="hint_username">Name</string>
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
     <string name="eventName">Event Name</string>
@@ -22,6 +23,7 @@
     <string name="error_message_age">Enter Age</string>
     <string name="error_message_password">Enter Password</string>
     <string name="error_message_mandotary">Field can not be empty</string>
+    <string name="error_user_does_not_exist">User does not exist</string>
     <string name="success_message">Registration Successful</string>
     <string name="selected_event">event selected</string>
     <string name="text_not_member">No account yet? Create one</string>
@@ -44,6 +46,7 @@
     <string name="text_line_3">Surburb/Area</string>
     <string name="text_line_4">Province</string>
     <string name="text_postal_code">Code</string>
+    <string name="no_data_available">No data available</string>
 
 
 </resources>
