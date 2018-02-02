@@ -3,6 +3,8 @@ package development.ngbontsi.com.activities;
 
 import static  development.ngbontsi.com.constants.ApplicationConstants.Administration_role;
 import static  development.ngbontsi.com.constants.ApplicationConstants.Administration_user;
+
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -86,6 +88,8 @@ verifyAdminRights();
             Snackbar.make(adminLoginBinding.nestedScrollView, getString(R.string.not_admin_message), Snackbar.LENGTH_LONG).show();
         else{
 //            TODO  call admin screen
+            Intent adminHome = new Intent(activity,AdminHomeActivity.class);
+            startActivity(adminHome);
         }
     }
 }

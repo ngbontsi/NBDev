@@ -46,6 +46,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
     private void initListeners() {
         logInBinding.appCompatButtonLogin.setOnClickListener(this);
         logInBinding.textViewLinkRegister.setOnClickListener(this);
+        logInBinding.appCompatButtonAdminLogin.setOnClickListener(this);
     }
 
     /**
