@@ -1,12 +1,21 @@
 package development.ngbontsi.com.activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
 import development.ngbontsi.com.R;
+import development.ngbontsi.com.model.Commercial;
+import development.ngbontsi.com.model.Event;
+import development.ngbontsi.com.model.EventStatus;
+import development.ngbontsi.com.model.EventType;
+import development.ngbontsi.com.model.Organizer;
+import development.ngbontsi.com.model.VenueFacility;
 
 public class AdminHomeActivity extends AppCompatActivity implements View.OnClickListener{
+
+    private AppCompatActivity activity = AdminHomeActivity.this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,32 +32,39 @@ public class AdminHomeActivity extends AppCompatActivity implements View.OnClick
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.appCompatButtonAddCommercial:
-//                TODO
+                    callScreen(AddCommercialActivity.class);
                 break;
             case R.id.appCompatButtonAddEvent:
-//                TODO
+callScreen(Event.class);
                 break;
             case R.id.appCompatButtonAddFacility:
-//                TODO
+            callScreen(AddFacilityActivity.class);
                 break;
             case R.id.appCompatButtonAddOrganizer:
-//                TODO
+                callScreen(AddUserActivity.class);
                 break;
             case R.id.appCompatButtonAddStatus:
-//                TODO
+                callScreen(AddEventStatusActivity.class);
                 break;
             case R.id.appCompatButtonAddType:
-//                TODO
+                    callScreen(AddEventTypeActivity.class);
                 break;
             case R.id.appCompatButtonAddUser:
-//                TODO
+                callScreen(AddUserActivity.class);
                 break;
             case R.id.appCompatButtonAddVenue:
-//                TODO
+                callScreen(AddVenueActivity.class);
                 break;
 
 
         }
+    }
+
+    private void callScreen(Class<?> clazz) {
+
+        Intent screenCall = new Intent(activity,clazz);
+        startActivity(screenCall);
+
     }
 
 }

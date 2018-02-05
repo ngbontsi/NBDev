@@ -29,7 +29,16 @@
             android:name=".event.EventActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".activities.AdminLoginActivity" />
-        <activity android:name=".activities.AdminHomeActivity"></activity>
+        <activity android:name=".activities.AdminHomeActivity" />
+        <activity android:name=".activities.AddAddressActivity" />
+        <activity android:name=".activities.AddCommercialActivity" />
+        <activity android:name=".activities.AddContactActivity" />
+        <activity android:name=".activities.AddEventActivity" />
+        <activity android:name=".activities.AddUserActivity" />
+        <activity android:name=".activities.AddEventStatusActivity" />
+        <activity android:name=".activities.AddEventTypeActivity" />
+        <activity android:name=".activities.AddVenueActivity" />
+        <activity android:name=".activities.AddFacilityActivity"></activity>
     </application>
 
 </manifest>
