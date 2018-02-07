@@ -8,16 +8,19 @@ import android.view.View;
 
 import development.ngbontsi.com.R;
 import development.ngbontsi.com.databinding.ActivityAddEventStatusBinding;
+import development.ngbontsi.com.util.InputValidation;
 
 public class AddEventStatusActivity extends AppCompatActivity implements View.OnClickListener{
 
     private AppCompatActivity activity = AddEventStatusActivity.this;
     private ActivityAddEventStatusBinding addEventStatusBinding;
+    private InputValidation inputValidation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addEventStatusBinding = DataBindingUtil.setContentView(activity,R.layout.activity_add_event_status);
         addEventStatusBinding.appCompatButtonAddEventStatus.setOnClickListener(this);
+        inputValidation = new InputValidation(activity);
     }
 
     @Override
@@ -25,6 +28,9 @@ public class AddEventStatusActivity extends AppCompatActivity implements View.On
 
         switch (v.getId()){
             case R.id.appCompatButtonAddEventStatus:
+
+                if (!inputValidation.isInputEditTextFilled(addEventStatusBinding.textInputEditTextDescription, addEventStatusBinding.textInputLayoutDescription, getString(R.string.error_message_mandotary)))
+                    return;
                 Snackbar.make(addEventStatusBinding.nestedScrollView,getString(R.string.text_record_added),Snackbar.LENGTH_LONG).show();
         }
 

@@ -8,17 +8,20 @@ import android.view.View;
 
 import development.ngbontsi.com.R;
 import development.ngbontsi.com.databinding.ActivityAddVenueBinding;
+import development.ngbontsi.com.util.InputValidation;
 
 public class AddVenueActivity extends AppCompatActivity implements View.OnClickListener {
 
     private AppCompatActivity activity = AddVenueActivity.this;
     private ActivityAddVenueBinding addVenueBinding;
+    private InputValidation inputValidation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addVenueBinding = DataBindingUtil.setContentView(activity,R.layout.activity_add_venue);
         addVenueBinding.appCompatButtonAddVenue.setOnClickListener(this);
+        inputValidation = new InputValidation(activity);
 
     }
 
@@ -27,6 +30,8 @@ public class AddVenueActivity extends AppCompatActivity implements View.OnClickL
 
         switch (v.getId()){
             case R.id.appCompatButtonAddVenue:
+                if (!inputValidation.isInputEditTextFilled(addVenueBinding.textInputEditTextDescription, addVenueBinding.textInputLayoutDescription, getString(R.string.error_message_mandotary)))
+                    return;
                 Snackbar.make(addVenueBinding.nestedScrollView,getString(R.string.text_record_added),Snackbar.LENGTH_LONG).show();
         }
 
