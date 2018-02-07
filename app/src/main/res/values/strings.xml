@@ -59,6 +59,14 @@
     <string name="text_add_user">Add User</string>
     <string name="text_login_admin">Login as Admin</string>
     <string name="text_add_address">Add Address</string>
+    <string name="text_description">Enter description</string>
+    <string name="text_contact_number">Enter Contact number</string>
+    <string name="text_event_name">Enter Event Name</string>
+    <string name="text_add_event">Add Event</string>
+    <string name="text_first_name">enter Firstname</string>
+    <string name="text_last_name">Enter Last Name</string>
+    <string name="text_email">Enter Email</string>
+    <string name="text_record_added">Record successfully added</string>
 
 
 </resources>

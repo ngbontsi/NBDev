@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="40dp"
-                android:src="@drawable/admin_page" />
+                android:src="@drawable/add_icon" />
 
 
             <android.support.design.widget.TextInputLayout
@@ -43,7 +43,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/text_street"
-                    android:inputType="textPassword"
+                    android:inputType="text"
                     android:maxLines="1"
                     android:textColor="@android:color/white"
                     android:text="@{address.street}"/>

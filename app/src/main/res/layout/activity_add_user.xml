@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="40dp"
-                android:src="@drawable/admin_page" />
+                android:src="@drawable/add_icon" />
 
 
             <android.support.design.widget.TextInputLayout
@@ -40,7 +40,7 @@
                     android:id="@+id/textInputEditTextFirstName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/text_street"
+                    android:hint="@string/text_first_name"
                     android:inputType="textPassword"
                     android:maxLines="1"
                     android:textColor="@android:color/white"
@@ -56,7 +56,7 @@
                     android:id="@+id/textInputEditTextLastName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/text_street"
+                    android:hint="@string/text_last_name"
                     android:inputType="textPassword"
                     android:maxLines="1"
                     android:textColor="@android:color/white"
@@ -72,7 +72,7 @@
                     android:id="@+id/textInputEditTextEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/text_street"
+                    android:hint="@string/text_email"
                     android:inputType="textPassword"
                     android:maxLines="1"
                     android:textColor="@android:color/white"
@@ -83,12 +83,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <android.support.v7.widget.AppCompatButton
-                android:id="@+id/appCompatButtonAddAddress"
+                android:id="@+id/appCompatButtonAddUser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
                 android:background="@color/colorTextHint"
-                android:text="@string/text_add_address" />
+                android:text="@string/text_add_user" />
         </android.support.v7.widget.LinearLayoutCompat>
     </android.support.v4.widget.NestedScrollView>
 </layout>
