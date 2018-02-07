@@ -1,11 +1,13 @@
 package development.ngbontsi.com.activities;
 
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
 import development.ngbontsi.com.R;
+import development.ngbontsi.com.databinding.ActivityAdminHomeBinding;
 import development.ngbontsi.com.model.Commercial;
 import development.ngbontsi.com.model.Event;
 import development.ngbontsi.com.model.EventStatus;
@@ -16,12 +18,30 @@ import development.ngbontsi.com.model.VenueFacility;
 public class AdminHomeActivity extends AppCompatActivity implements View.OnClickListener{
 
     private AppCompatActivity activity = AdminHomeActivity.this;
+    private  ActivityAdminHomeBinding adminHomeBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_home);
+        adminHomeBinding = DataBindingUtil.setContentView( activity,R.layout.activity_admin_home);
+        getSupportActionBar().hide();
+        initListeners();
+        
+    
     }
+
+    private void initListeners() {
+
+        adminHomeBinding.appCompatButtonAddCommercial.setOnClickListener(this);
+        adminHomeBinding.appCompatButtonAddEvent.setOnClickListener(this);
+        adminHomeBinding.appCompatButtonAddOrganizer.setOnClickListener(this);
+        adminHomeBinding.appCompatButtonAddFacility.setOnClickListener(this);
+        adminHomeBinding.appCompatButtonAddStatus.setOnClickListener(this);
+        adminHomeBinding.appCompatButtonAddType.setOnClickListener(this);
+        adminHomeBinding.appCompatButtonAddUser.setOnClickListener(this);
+        adminHomeBinding.appCompatButtonAddVenue.setOnClickListener(this);
+    }
+
 
     /**
      * This implemented method is to listen the click on view
