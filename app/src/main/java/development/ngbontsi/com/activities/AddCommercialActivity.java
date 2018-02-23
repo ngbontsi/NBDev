@@ -7,7 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 
 import development.ngbontsi.com.R;
+import development.ngbontsi.com.database.ApplicationDatabase;
 import development.ngbontsi.com.databinding.ActivityAddCommercialBinding;
+import development.ngbontsi.com.interfaces.CommercialDAO;
+import development.ngbontsi.com.model.Commercial;
 import development.ngbontsi.com.util.InputValidation;
 
 public class AddCommercialActivity extends AppCompatActivity implements View.OnClickListener {
@@ -15,6 +18,7 @@ public class AddCommercialActivity extends AppCompatActivity implements View.OnC
     private AppCompatActivity activity = AddCommercialActivity.this;
     private ActivityAddCommercialBinding addCommercialBinding;
     private InputValidation inputValidation;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,9 +33,12 @@ public class AddCommercialActivity extends AppCompatActivity implements View.OnC
 
         switch (v.getId()){
             case R.id.appCompatButtonAddCommercial:
-//                TODO
+
                 if (!inputValidation.isInputEditTextFilled(addCommercialBinding.textInputEditTextDescription, addCommercialBinding.textInputLayoutDescription, getString(R.string.error_message_mandotary)))
                     return;
+                Commercial commercial = new Commercial();
+                commercial.setEvent_commercial_description(addCommercialBinding.textInputEditTextDescription.getText().toString().trim());
+                ApplicationDatabase.getAppDatabase(activity).commercialDAO().insertAll(commercial);
                 Snackbar.make(addCommercialBinding.nestedScrollView, getString(R.string.text_record_added), Snackbar.LENGTH_LONG).show();
         }
 

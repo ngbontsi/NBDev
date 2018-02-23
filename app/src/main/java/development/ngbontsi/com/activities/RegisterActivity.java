@@ -7,8 +7,13 @@ import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
 import development.ngbontsi.com.R;
 
+import development.ngbontsi.com.api.ApplicationAPI;
 import development.ngbontsi.com.database.AddressData;
 import development.ngbontsi.com.database.LoginData;
 import development.ngbontsi.com.database.UserData;
@@ -17,6 +22,10 @@ import development.ngbontsi.com.model.Address;
 import development.ngbontsi.com.model.Login;
 import development.ngbontsi.com.model.User;
 import development.ngbontsi.com.util.InputValidation;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
     private final AppCompatActivity activity = RegisterActivity.this;
@@ -135,62 +144,62 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 registerBinding.textInputLayoutConfirmPassword, getString(R.string.error_password_match))) {
             return;
         }
-String username = registerBinding.textInputEditTextUserName.getText().toString().trim();
-        if (!loginData.userExist(username)) {
-String email =registerBinding.textInputEditTextEmail.getText().toString().trim();
-            String firstName =registerBinding.textInputEditTextName.getText().toString().trim();
-            String password = registerBinding.textInputEditTextPassword.getText().toString().trim();
-            String city =registerBinding.textInputEditTextCity.getText().toString().trim();
-            String line1 = registerBinding.textInputEditTextLine1.getText().toString().trim();
-            String line2 = registerBinding.textInputEditTextLine2.getText().toString().trim();
-            String line3 = registerBinding.textInputEditTextLine3.getText().toString().trim();
-            String province = registerBinding.textInputEditTextProvince.getText().toString().trim();
-            String street = registerBinding.textInputEditTextStreet.getText().toString().trim();
-            String postalCode = registerBinding.textInputEditTextPostalCode.getText().toString().trim();
+//String username = registerBinding.textInputEditTextUserName.getText().toString().trim();
+//        if (!loginData.userExist(username)) {
+//String email =registerBinding.textInputEditTextEmail.getText().toString().trim();
+//            String firstName =registerBinding.textInputEditTextName.getText().toString().trim();
+//            String password = registerBinding.textInputEditTextPassword.getText().toString().trim();
+//            String city =registerBinding.textInputEditTextCity.getText().toString().trim();
+//            String line1 = registerBinding.textInputEditTextLine1.getText().toString().trim();
+//            String line2 = registerBinding.textInputEditTextLine2.getText().toString().trim();
+//            String line3 = registerBinding.textInputEditTextLine3.getText().toString().trim();
+//            String province = registerBinding.textInputEditTextProvince.getText().toString().trim();
+//            String street = registerBinding.textInputEditTextStreet.getText().toString().trim();
+//            String postalCode = registerBinding.textInputEditTextPostalCode.getText().toString().trim();
+//
+//            Address existingAddress = addressData.getCommercial(street);
+//            User user = new User();
+//            Login login = new Login();
+//            if(existingAddress== null) {
+//                Address address = new Address();
+//                address.setCity(city);
+//                address.setLine_1(line1);
+//                address.setLine_2(line2);
+//                address.setLine_3(line3);
+//                address.setLine_4(province);
+//                address.setStreet(street);
+//                address.setPostal_code(Integer.parseInt(postalCode));
+//                address=addressData.addAddress(address);
+//                user.setAddressid(address.getAddress_id());
+//            }else
+//                user.setAddressid(existingAddress.getAddress_id());
+//            user.setEmail(email);
+//            login.setUsername(username);
+//            user.setName(firstName);
+//            login.setPassword(password);
+//            if(registerBinding.chkOrganiser.isChecked())
+//            login.setUserrole(Organizer_role.getValue());
+//            else
+//                login.setUserrole(User_role.getValue());
+//            user.setPassword(password);
+//            userData.addUser(user);
+//            loginData.addLogin(login);
+//
+//
+//            // Snack Bar to show success message that record saved successfully
+//            Snackbar.make(registerBinding.nestedScrollView, getString(R.string.success_message), Snackbar.LENGTH_LONG).show();
+//            emptyInputEditText();
+//
+//            Intent accountsIntent = new Intent(activity, LogInActivity.class);
+//            startActivity(accountsIntent);
+//
+//
+//        } else {
+//            // Snack Bar to show error message that record already exists
+//            Snackbar.make(registerBinding.nestedScrollView, getString(R.string.error_email_exists), Snackbar.LENGTH_LONG).show();
+//        }
 
-            Address existingAddress = addressData.getCommercial(street);
-            User user = new User();
-            Login login = new Login();
-            if(existingAddress== null) {
-                Address address = new Address();
-                address.setCity(city);
-                address.setLine_1(line1);
-                address.setLine_2(line2);
-                address.setLine_3(line3);
-                address.setLine_4(province);
-                address.setStreet(street);
-                address.setPostal_code(Integer.parseInt(postalCode));
-                address=addressData.addAddress(address);
-                user.setAddressid(address.getAddress_id());
-            }else
-                user.setAddressid(existingAddress.getAddress_id());
-            user.setEmail(email);
-            login.setUsername(username);
-            user.setName(firstName);
-            login.setPassword(password);
-            if(registerBinding.chkOrganiser.isChecked())
-            login.setUserrole(Organizer_role.getValue());
-            else
-                login.setUserrole(User_role.getValue());
-            user.setPassword(password);
-            userData.addUser(user);
-            loginData.addLogin(login);
-
-
-            // Snack Bar to show success message that record saved successfully
-            Snackbar.make(registerBinding.nestedScrollView, getString(R.string.success_message), Snackbar.LENGTH_LONG).show();
-            emptyInputEditText();
-
-            Intent accountsIntent = new Intent(activity, LogInActivity.class);
-            startActivity(accountsIntent);
-
-
-        } else {
-            // Snack Bar to show error message that record already exists
-            Snackbar.make(registerBinding.nestedScrollView, getString(R.string.error_email_exists), Snackbar.LENGTH_LONG).show();
-        }
-
-
+insertUser();
     }
 
     /**
@@ -211,6 +220,30 @@ String email =registerBinding.textInputEditTextEmail.getText().toString().trim()
         registerBinding.textInputEditTextPostalCode.setText(null);
         registerBinding.chkOrganiser.setChecked(false);
         registerBinding.chkUser.setChecked(true);
+
+    }
+
+    private void insertUser(){
+
+        Retrofit retrofit= new Retrofit.Builder().baseUrl("http://localhost/").build();
+
+        ApplicationAPI api = retrofit.create(ApplicationAPI.class);
+
+        api.insertUser(registerBinding.textInputEditTextName.getText().toString().trim(), registerBinding.textInputEditTextName.getText().toString().trim(), registerBinding.textInputEditTextPassword.getText().toString().trim(),
+                new Callback<Response>() {
+                    @Override
+                    public void onResponse(Call<Response> call, Response<Response> response) {
+
+                        Snackbar.make(registerBinding.nestedScrollView, response.body().toString(), Snackbar.LENGTH_LONG).show();
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<Response> call, Throwable t) {
+                        Snackbar.make(registerBinding.nestedScrollView, t.getMessage().toString(), Snackbar.LENGTH_LONG).show();
+                    }
+                });
+
 
     }
 

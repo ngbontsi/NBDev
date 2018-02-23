@@ -7,7 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 
 import development.ngbontsi.com.R;
+import development.ngbontsi.com.database.ApplicationDatabase;
 import development.ngbontsi.com.databinding.ActivityAddAddressBinding;
+import development.ngbontsi.com.interfaces.AddressDAO;
+import development.ngbontsi.com.model.Address;
 import development.ngbontsi.com.util.InputValidation;
 
 public class AddAddressActivity extends AppCompatActivity implements View.OnClickListener{
@@ -15,7 +18,7 @@ public class AddAddressActivity extends AppCompatActivity implements View.OnClic
     private AppCompatActivity activity= AddAddressActivity.this;
     private ActivityAddAddressBinding addAddressBinding;
     private InputValidation inputValidation;
-
+    private AddressDAO addressDAO;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +32,7 @@ public class AddAddressActivity extends AppCompatActivity implements View.OnClic
 
         switch (v.getId()) {
             case R.id.appCompatButtonAddAddress:
-//                TODO
+
                 if (!inputValidation.isInputEditTextFilled(addAddressBinding.textInputEditTextStreet, addAddressBinding.textInputLayoutStreet, getString(R.string.error_message_mandotary)))
                     return;
                 if (!inputValidation.isInputEditTextFilled(addAddressBinding.textInputEditTextProvince, addAddressBinding.textInputLayoutProvince, getString(R.string.error_message_mandotary)))
@@ -42,6 +45,14 @@ public class AddAddressActivity extends AppCompatActivity implements View.OnClic
                     return;
                 if (!inputValidation.isInputEditTextFilled(addAddressBinding.textInputEditTextLine3, addAddressBinding.textInputLayoutLine3, getString(R.string.error_message_mandotary)))
                     return;
+
+                Address address = new Address();
+                address.setStreet(addAddressBinding.textInputEditTextStreet.getText().toString().trim());
+                address.setLine_1(addAddressBinding.textInputEditTextLine1.getText().toString().trim());
+                address.setLine_2(addAddressBinding.textInputEditTextLine2.getText().toString().trim());
+                address.setLine_3(addAddressBinding.textInputEditTextLine3.getText().toString().trim());
+                address.setLine_1(addAddressBinding.textInputEditTextLine1.getText().toString().trim());
+                ApplicationDatabase.getAppDatabase(activity).addressDAO().insertAll(address);
 
                 Snackbar.make(addAddressBinding.nestedScrollView, getString(R.string.text_record_added), Snackbar.LENGTH_LONG).show();
         }

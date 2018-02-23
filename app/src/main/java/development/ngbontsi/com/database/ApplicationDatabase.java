@@ -4,8 +4,6 @@ import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 
 import development.ngbontsi.com.interfaces.AddressDAO;
 import development.ngbontsi.com.interfaces.CommercialDAO;
@@ -29,7 +27,7 @@ import development.ngbontsi.com.model.Organizer;
 import development.ngbontsi.com.model.User;
 import development.ngbontsi.com.model.Venue;
 import development.ngbontsi.com.model.VenueFacility;
-import development.ngbontsi.com.util.DatabaseCreation;
+
 @Database(entities = {User.class, Address.class, Commercial.class, Contact.class, Event.class, EventType.class, Organizer.class, Venue.class, EventStatus.class, VenueFacility.class, Login.class},
 version = 1)
 public abstract class ApplicationDatabase extends RoomDatabase {

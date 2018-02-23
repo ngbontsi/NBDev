@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 
 import development.ngbontsi.com.R;
+import development.ngbontsi.com.database.ApplicationDatabase;
 import development.ngbontsi.com.databinding.ActivityAddEventStatusBinding;
+import development.ngbontsi.com.model.EventStatus;
 import development.ngbontsi.com.util.InputValidation;
 
 public class AddEventStatusActivity extends AppCompatActivity implements View.OnClickListener{
@@ -31,6 +33,9 @@ public class AddEventStatusActivity extends AppCompatActivity implements View.On
 
                 if (!inputValidation.isInputEditTextFilled(addEventStatusBinding.textInputEditTextDescription, addEventStatusBinding.textInputLayoutDescription, getString(R.string.error_message_mandotary)))
                     return;
+                EventStatus eventStatus = new EventStatus();
+                eventStatus.setEvent_description(addEventStatusBinding.textInputEditTextDescription.getText().toString().trim());
+                ApplicationDatabase.getAppDatabase(activity).eventStatusDAO().insertAll(eventStatus);
                 Snackbar.make(addEventStatusBinding.nestedScrollView,getString(R.string.text_record_added),Snackbar.LENGTH_LONG).show();
         }
 

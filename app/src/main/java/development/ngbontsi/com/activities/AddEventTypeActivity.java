@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 
 import development.ngbontsi.com.R;
+import development.ngbontsi.com.database.ApplicationDatabase;
 import development.ngbontsi.com.databinding.ActivityAddEventTypeBinding;
+import development.ngbontsi.com.model.EventType;
 import development.ngbontsi.com.util.InputValidation;
 
 public class AddEventTypeActivity extends AppCompatActivity implements View.OnClickListener{
@@ -31,6 +33,10 @@ public class AddEventTypeActivity extends AppCompatActivity implements View.OnCl
             case R.id.appCompatButtonAddEventType:
                 if (!inputValidation.isInputEditTextFilled(addEventTypeBinding.textInputEditTextDescription, addEventTypeBinding.textInputLayoutDescription, getString(R.string.error_message_mandotary)))
                     return;
+
+                EventType eventType = new EventType();
+                eventType.setEvent_type_description(addEventTypeBinding.textInputEditTextDescription.getText().toString().trim());
+                ApplicationDatabase.getAppDatabase(activity).eventTypeDAO().insertAll(eventType);
                 Snackbar.make(addEventTypeBinding.nestedScrollView,getString(R.string.text_record_added),Snackbar.LENGTH_LONG).show();
         }
 

@@ -43,7 +43,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/text_contact_number"
-                    android:inputType="textPassword"
+                    android:inputType="text"
                     android:maxLines="1"
                     android:textColor="@android:color/white"
                     android:text="@{contact.contact_number}"/>
@@ -55,6 +55,12 @@
     android:layout_height="wrap_content">
 
 </android.support.v7.widget.AppCompatSpinner>
+            <android.support.v7.widget.AppCompatSpinner
+                android:id="@+id/addressList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </android.support.v7.widget.AppCompatSpinner>
 
             <android.support.v7.widget.AppCompatButton
                 android:id="@+id/appCompatButtonAddContact"

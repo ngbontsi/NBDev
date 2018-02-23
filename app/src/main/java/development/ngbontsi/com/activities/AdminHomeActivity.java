@@ -33,6 +33,7 @@ public class AdminHomeActivity extends AppCompatActivity implements View.OnClick
     private void initListeners() {
 
         adminHomeBinding.appCompatButtonAddCommercial.setOnClickListener(this);
+        adminHomeBinding.appCompatButtonAdContact.setOnClickListener(this);
         adminHomeBinding.appCompatButtonAddEvent.setOnClickListener(this);
         adminHomeBinding.appCompatButtonAddOrganizer.setOnClickListener(this);
         adminHomeBinding.appCompatButtonAddFacility.setOnClickListener(this);
@@ -40,6 +41,7 @@ public class AdminHomeActivity extends AppCompatActivity implements View.OnClick
         adminHomeBinding.appCompatButtonAddType.setOnClickListener(this);
         adminHomeBinding.appCompatButtonAddUser.setOnClickListener(this);
         adminHomeBinding.appCompatButtonAddVenue.setOnClickListener(this);
+        adminHomeBinding.appCompatButtonAddAddress.setOnClickListener(this);
     }
 
 
@@ -55,7 +57,7 @@ public class AdminHomeActivity extends AppCompatActivity implements View.OnClick
                     callScreen(AddCommercialActivity.class);
                 break;
             case R.id.appCompatButtonAddEvent:
-callScreen(Event.class);
+callScreen(AddEventActivity.class);
                 break;
             case R.id.appCompatButtonAddFacility:
             callScreen(AddFacilityActivity.class);
@@ -74,6 +76,13 @@ callScreen(Event.class);
                 break;
             case R.id.appCompatButtonAddVenue:
                 callScreen(AddVenueActivity.class);
+                break;
+            case R.id.appCompatButtonAddAddress:
+                callScreen(AddAddressActivity.class);
+                break;
+
+            case R.id.appCompatButtonAdContact:
+                callScreen(AddContactActivity.class);
                 break;
 
 

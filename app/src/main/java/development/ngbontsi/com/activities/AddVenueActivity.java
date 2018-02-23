@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 
 import development.ngbontsi.com.R;
+import development.ngbontsi.com.database.ApplicationDatabase;
 import development.ngbontsi.com.databinding.ActivityAddVenueBinding;
+import development.ngbontsi.com.model.Venue;
 import development.ngbontsi.com.util.InputValidation;
 
 public class AddVenueActivity extends AppCompatActivity implements View.OnClickListener {
@@ -32,6 +34,9 @@ public class AddVenueActivity extends AppCompatActivity implements View.OnClickL
             case R.id.appCompatButtonAddVenue:
                 if (!inputValidation.isInputEditTextFilled(addVenueBinding.textInputEditTextDescription, addVenueBinding.textInputLayoutDescription, getString(R.string.error_message_mandotary)))
                     return;
+                Venue venue = new Venue();
+                venue.setVenue_name(addVenueBinding.textInputEditTextDescription.getText().toString().trim());
+                ApplicationDatabase.getAppDatabase(activity).venueDAO().insertAll(venue);
                 Snackbar.make(addVenueBinding.nestedScrollView,getString(R.string.text_record_added),Snackbar.LENGTH_LONG).show();
         }
 
