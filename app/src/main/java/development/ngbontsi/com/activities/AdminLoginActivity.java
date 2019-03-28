@@ -12,7 +12,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import development.ngbontsi.com.R;
-import development.ngbontsi.com.database.LoginData;
 import development.ngbontsi.com.databinding.ActivityAdminLoginBinding;
 import development.ngbontsi.com.util.InputValidation;
 

@@ -7,18 +7,22 @@ import android.os.Bundle;
 import android.view.View;
 
 import development.ngbontsi.com.R;
-import development.ngbontsi.com.database.ApplicationDatabase;
+import development.ngbontsi.com.api.ApplicationAPI;
 import development.ngbontsi.com.databinding.ActivityAddAddressBinding;
+
 import development.ngbontsi.com.interfaces.AddressDAO;
 import development.ngbontsi.com.model.Address;
 import development.ngbontsi.com.util.InputValidation;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AddAddressActivity extends AppCompatActivity implements View.OnClickListener{
 
     private AppCompatActivity activity= AddAddressActivity.this;
     private ActivityAddAddressBinding addAddressBinding;
     private InputValidation inputValidation;
-    private AddressDAO addressDAO;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,10 +56,33 @@ public class AddAddressActivity extends AppCompatActivity implements View.OnClic
                 address.setLine_2(addAddressBinding.textInputEditTextLine2.getText().toString().trim());
                 address.setLine_3(addAddressBinding.textInputEditTextLine3.getText().toString().trim());
                 address.setLine_1(addAddressBinding.textInputEditTextLine1.getText().toString().trim());
-                ApplicationDatabase.getAppDatabase(activity).addressDAO().insertAll(address);
 
+insertData(address);
                 Snackbar.make(addAddressBinding.nestedScrollView, getString(R.string.text_record_added), Snackbar.LENGTH_LONG).show();
         }
+
+    }
+
+    private void insertData(Address address) {
+        AddressDAO addressDAO = ApplicationAPI.getRETROFIT().create(AddressDAO.class);
+        Call<Address> call = addressDAO.insertAll(address);
+
+        call.enqueue(new Callback<Address>() {
+            @Override
+            public void onResponse(Call<Address> call, Response<Address> response) {
+
+                Address address1 = response.body();
+
+
+
+            }
+
+            @Override
+            public void onFailure(Call<Address> call, Throwable t) {
+Snackbar.make(addAddressBinding.nestedScrollView,t.getMessage(),Snackbar.LENGTH_LONG).show();
+            }
+        });
+
 
     }
 }

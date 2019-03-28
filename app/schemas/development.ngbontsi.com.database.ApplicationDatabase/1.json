@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "727055b6382b4ce8cb1dce5d36cfdd53",
+    "identityHash": "ce8852beddad05e537872405fafa2a9b",
     "entities": [
       {
-        "tableName": "users",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `first_name` TEXT, `last_name` TEXT, `address_id` INTEGER, `email` TEXT, `password` TEXT)",
+        "tableName": "User",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER, `name` TEXT, `lastName` TEXT, `addressid` INTEGER, `email` TEXT, `password` TEXT)",
         "fields": [
           {
             "fieldPath": "id",
@@ -15,17 +15,17 @@
           },
           {
             "fieldPath": "name",
-            "columnName": "first_name",
+            "columnName": "name",
             "affinity": "TEXT"
           },
           {
             "fieldPath": "lastName",
-            "columnName": "last_name",
+            "columnName": "lastName",
             "affinity": "TEXT"
           },
           {
             "fieldPath": "addressid",
-            "columnName": "address_id",
+            "columnName": "addressid",
             "affinity": "INTEGER"
           },
           {
@@ -40,17 +40,15 @@
           }
         ],
         "primaryKey": {
-          "columnNames": [
-            "id"
-          ],
-          "autoGenerate": true
+          "columnNames": [],
+          "autoGenerate": false
         },
         "indices": [],
         "foreignKeys": []
       },
       {
-        "tableName": "address",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`address_id` INTEGER PRIMARY KEY AUTOINCREMENT, `city` TEXT, `street` TEXT, `line_1` TEXT, `line_2` TEXT, `line_3` TEXT, `line_4` TEXT, `postal_code` INTEGER)",
+        "tableName": "Address",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`address_id` INTEGER, `city` TEXT, `street` TEXT, `line_1` TEXT, `line_2` TEXT, `line_3` TEXT, `line_4` TEXT, `postal_code` INTEGER)",
         "fields": [
           {
             "fieldPath": "address_id",
@@ -94,17 +92,15 @@
           }
         ],
         "primaryKey": {
-          "columnNames": [
-            "address_id"
-          ],
-          "autoGenerate": true
+          "columnNames": [],
+          "autoGenerate": false
         },
         "indices": [],
         "foreignKeys": []
       },
       {
-        "tableName": "commercial",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`event_commercial_id` INTEGER PRIMARY KEY AUTOINCREMENT, `description` TEXT)",
+        "tableName": "Commercial",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`event_commercial_id` INTEGER, `event_commercial_description` TEXT)",
         "fields": [
           {
             "fieldPath": "event_commercial_id",
@@ -113,22 +109,20 @@
           },
           {
             "fieldPath": "event_commercial_description",
-            "columnName": "description",
+            "columnName": "event_commercial_description",
             "affinity": "TEXT"
           }
         ],
         "primaryKey": {
-          "columnNames": [
-            "event_commercial_id"
-          ],
-          "autoGenerate": true
+          "columnNames": [],
+          "autoGenerate": false
         },
         "indices": [],
         "foreignKeys": []
       },
       {
-        "tableName": "contact",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`contact_id` INTEGER PRIMARY KEY AUTOINCREMENT, `organizer_id` INTEGER, `address_id` INTEGER, `contact_number` TEXT, `web_site_address` TEXT, `other_details` TEXT)",
+        "tableName": "Contact",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`contact_id` INTEGER, `organizer_id` INTEGER, `address_id` INTEGER, `contact_number` TEXT, `web_site_address` TEXT, `other_details` TEXT)",
         "fields": [
           {
             "fieldPath": "contact_id",
@@ -162,17 +156,15 @@
           }
         ],
         "primaryKey": {
-          "columnNames": [
-            "contact_id"
-          ],
-          "autoGenerate": true
+          "columnNames": [],
+          "autoGenerate": false
         },
         "indices": [],
         "foreignKeys": []
       },
       {
-        "tableName": "event",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`event_id` INTEGER PRIMARY KEY AUTOINCREMENT, `event_status_id` INTEGER, `event_type_id` INTEGER, `event_commercial_id` INTEGER, `organizer_id` INTEGER, `venue_id` INTEGER, `description` TEXT, `start_date` TEXT, `end_date` TEXT)",
+        "tableName": "Event",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`event_id` INTEGER, `event_status_id` INTEGER, `event_type_id` INTEGER, `event_commercial_id` INTEGER, `organizer_id` INTEGER, `venue_id` INTEGER, `name` TEXT, `startDate` TEXT, `endDate` TEXT)",
         "fields": [
           {
             "fieldPath": "event_id",
@@ -206,32 +198,30 @@
           },
           {
             "fieldPath": "name",
-            "columnName": "description",
+            "columnName": "name",
             "affinity": "TEXT"
           },
           {
             "fieldPath": "startDate",
-            "columnName": "start_date",
+            "columnName": "startDate",
             "affinity": "TEXT"
           },
           {
             "fieldPath": "endDate",
-            "columnName": "end_date",
+            "columnName": "endDate",
             "affinity": "TEXT"
           }
         ],
         "primaryKey": {
-          "columnNames": [
-            "event_id"
-          ],
-          "autoGenerate": true
+          "columnNames": [],
+          "autoGenerate": false
         },
         "indices": [],
         "foreignKeys": []
       },
       {
-        "tableName": "event_type",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`event_type_id` INTEGER PRIMARY KEY AUTOINCREMENT, `description` TEXT)",
+        "tableName": "EventType",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`event_type_id` INTEGER, `event_type_description` TEXT)",
         "fields": [
           {
             "fieldPath": "event_type_id",
@@ -240,22 +230,20 @@
           },
           {
             "fieldPath": "event_type_description",
-            "columnName": "description",
+            "columnName": "event_type_description",
             "affinity": "TEXT"
           }
         ],
         "primaryKey": {
-          "columnNames": [
-            "event_type_id"
-          ],
-          "autoGenerate": true
+          "columnNames": [],
+          "autoGenerate": false
         },
         "indices": [],
         "foreignKeys": []
       },
       {
-        "tableName": "organizer",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`organizer_id` INTEGER PRIMARY KEY AUTOINCREMENT, `organizer_name` TEXT, `organizer_email` TEXT, `user_id` INTEGER)",
+        "tableName": "Organizer",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`organizer_id` INTEGER, `organizer_name` TEXT, `organizer_email` TEXT, `user_id` INTEGER)",
         "fields": [
           {
             "fieldPath": "organizer_id",
@@ -279,17 +267,15 @@
           }
         ],
         "primaryKey": {
-          "columnNames": [
-            "organizer_id"
-          ],
-          "autoGenerate": true
+          "columnNames": [],
+          "autoGenerate": false
         },
         "indices": [],
         "foreignKeys": []
       },
       {
-        "tableName": "venue",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`venue_id` INTEGER PRIMARY KEY AUTOINCREMENT, `description` TEXT)",
+        "tableName": "Venue",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`venue_id` INTEGER, `venue_name` TEXT)",
         "fields": [
           {
             "fieldPath": "venue_id",
@@ -298,22 +284,20 @@
           },
           {
             "fieldPath": "venue_name",
-            "columnName": "description",
+            "columnName": "venue_name",
             "affinity": "TEXT"
           }
         ],
         "primaryKey": {
-          "columnNames": [
-            "venue_id"
-          ],
-          "autoGenerate": true
+          "columnNames": [],
+          "autoGenerate": false
         },
         "indices": [],
         "foreignKeys": []
       },
       {
-        "tableName": "event_status",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`event_status_id` INTEGER PRIMARY KEY AUTOINCREMENT, `description` TEXT)",
+        "tableName": "EventStatus",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`event_status_id` INTEGER, `event_description` TEXT)",
         "fields": [
           {
             "fieldPath": "event_status_id",
@@ -322,22 +306,20 @@
           },
           {
             "fieldPath": "event_description",
-            "columnName": "description",
+            "columnName": "event_description",
             "affinity": "TEXT"
           }
         ],
         "primaryKey": {
-          "columnNames": [
-            "event_status_id"
-          ],
-          "autoGenerate": true
+          "columnNames": [],
+          "autoGenerate": false
         },
         "indices": [],
         "foreignKeys": []
       },
       {
-        "tableName": "venue_facility",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`facility_code` INTEGER PRIMARY KEY AUTOINCREMENT, `venue_id` INTEGER, `description` TEXT)",
+        "tableName": "VenueFacility",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`facility_code` INTEGER, `venue_id` INTEGER, `facility_description` TEXT)",
         "fields": [
           {
             "fieldPath": "facility_code",
@@ -351,22 +333,20 @@
           },
           {
             "fieldPath": "facility_description",
-            "columnName": "description",
+            "columnName": "facility_description",
             "affinity": "TEXT"
           }
         ],
         "primaryKey": {
-          "columnNames": [
-            "facility_code"
-          ],
-          "autoGenerate": true
+          "columnNames": [],
+          "autoGenerate": false
         },
         "indices": [],
         "foreignKeys": []
       },
       {
-        "tableName": "login",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `username` TEXT, `password` TEXT, `user_role` TEXT)",
+        "tableName": "Login",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER, `username` TEXT, `password` TEXT, `userrole` TEXT)",
         "fields": [
           {
             "fieldPath": "id",
@@ -385,15 +365,13 @@
           },
           {
             "fieldPath": "userrole",
-            "columnName": "user_role",
+            "columnName": "userrole",
             "affinity": "TEXT"
           }
         ],
         "primaryKey": {
-          "columnNames": [
-            "id"
-          ],
-          "autoGenerate": true
+          "columnNames": [],
+          "autoGenerate": false
         },
         "indices": [],
         "foreignKeys": []
@@ -401,7 +379,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"727055b6382b4ce8cb1dce5d36cfdd53\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"ce8852beddad05e537872405fafa2a9b\")"
     ]
   }
 }

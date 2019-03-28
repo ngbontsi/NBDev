@@ -5,13 +5,6 @@ import android.content.Context;
 import java.util.ArrayList;
 import java.util.List;
 
-import development.ngbontsi.com.database.ApplicationDatabase;
-import development.ngbontsi.com.database.CommercialDatabase;
-import development.ngbontsi.com.database.EventDatabase;
-import development.ngbontsi.com.database.EventStatusDatabase;
-import development.ngbontsi.com.database.EventTypeDatabase;
-import development.ngbontsi.com.database.OrganizerDatabase;
-import development.ngbontsi.com.database.VenueDatabase;
 import development.ngbontsi.com.model.Event;
 
 /**

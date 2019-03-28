@@ -1,21 +1,20 @@
 package development.ngbontsi.com.model;
 
-import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.PrimaryKey;
+
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by nbontsi on 2017/06/07.
  */
-@Entity(tableName = "organizer")
+
 public class Organizer {
-    @PrimaryKey(autoGenerate = true)
+    @SerializedName("organizer_id")
     private int organizer_id;
-    @ColumnInfo(name = "organizer_name")
+    @SerializedName("organizer_name")
     private String organizer_name;
-    @ColumnInfo(name = "organizer_email")
+    @SerializedName("organizer_email")
     private String organizer_email;
-    @ColumnInfo(name = "user_id")
+    @SerializedName("user_id")
     private int user_id;
 
     public int getOrganizer_id() {

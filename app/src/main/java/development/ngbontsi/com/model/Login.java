@@ -1,21 +1,21 @@
 package development.ngbontsi.com.model;
 
-import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.PrimaryKey;
+
+
+import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-@Entity(tableName = "login")
+
 public class Login implements Serializable{
 
-	@PrimaryKey(autoGenerate = true)
+	@SerializedName("id")
 	private int id;
-	@ColumnInfo(name= "username")
+	@SerializedName("username")
 	private String username;
-	@ColumnInfo(name= "password")
+	@SerializedName("password")
 	private String password;
-	@ColumnInfo(name = "user_role")
+	@SerializedName("user_role")
 	private String userrole;
 
 	public int getId() {

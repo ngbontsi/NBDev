@@ -1,27 +1,27 @@
 package development.ngbontsi.com.model;
 
-import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.PrimaryKey;
 
-import java.math.BigDecimal;
+
+import com.google.gson.annotations.SerializedName;
+
+
 
 /**
  * Created by nbontsi on 2017/06/07.
  */
-@Entity(tableName = "contact")
+
 public class Contact {
-    @PrimaryKey(autoGenerate = true)
+    @SerializedName("contact_id")
     private int contact_id;
-    @ColumnInfo(name = "organizer_id")
+    @SerializedName("organizer_id")
     private int organizer_id;
-    @ColumnInfo(name = "address_id")
+    @SerializedName( "address_id")
     private int address_id;
-    @ColumnInfo(name = "contact_number")
+    @SerializedName( "contact_number")
     private String contact_number;
-    @ColumnInfo(name = "web_site_address")
+    @SerializedName("web_site_address")
     private String web_site_address;
-    @ColumnInfo(name = "other_details")
+    @SerializedName("other_details")
     private String other_details;
 
     public int getContact_id() {

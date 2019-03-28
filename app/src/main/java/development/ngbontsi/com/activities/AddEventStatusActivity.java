@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import development.ngbontsi.com.R;
-import development.ngbontsi.com.database.ApplicationDatabase;
 import development.ngbontsi.com.databinding.ActivityAddEventStatusBinding;
 import development.ngbontsi.com.model.EventStatus;
 import development.ngbontsi.com.util.InputValidation;

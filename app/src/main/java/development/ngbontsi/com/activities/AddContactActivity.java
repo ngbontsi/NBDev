@@ -8,11 +8,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import development.ngbontsi.com.R;
-import development.ngbontsi.com.database.ApplicationDatabase;
 import development.ngbontsi.com.databinding.ActivityAddContactBinding;
 import development.ngbontsi.com.model.Address;
 import development.ngbontsi.com.model.Contact;

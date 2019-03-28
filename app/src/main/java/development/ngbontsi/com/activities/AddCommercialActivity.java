@@ -7,9 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import development.ngbontsi.com.R;
-import development.ngbontsi.com.database.ApplicationDatabase;
 import development.ngbontsi.com.databinding.ActivityAddCommercialBinding;
-import development.ngbontsi.com.interfaces.CommercialDAO;
 import development.ngbontsi.com.model.Commercial;
 import development.ngbontsi.com.util.InputValidation;
 

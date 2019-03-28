@@ -5,7 +5,6 @@ import com.google.gson.GsonBuilder;
 
 import java.util.List;
 
-import development.ngbontsi.com.api.ApplicationAPI;
 import development.ngbontsi.com.model.User;
 import retrofit2.Call;
 import retrofit2.Callback;

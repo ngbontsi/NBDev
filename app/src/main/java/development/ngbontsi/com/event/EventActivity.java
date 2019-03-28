@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 
 import development.ngbontsi.com.R;
 import development.ngbontsi.com.constants.ModelConstants;
-import development.ngbontsi.com.database.EventDatabase;
 import development.ngbontsi.com.model.Event;
 import development.ngbontsi.com.module.EventLayout;
 

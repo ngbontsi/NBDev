@@ -1,34 +1,37 @@
 package development.ngbontsi.com.interfaces;
 
-import android.arch.persistence.room.Dao;
-import android.arch.persistence.room.Delete;
-import android.arch.persistence.room.Insert;
-import android.arch.persistence.room.Query;
+
+
 
 import java.util.List;
 
 import development.ngbontsi.com.model.Address;
-import development.ngbontsi.com.model.User;
+
+import retrofit2.Call;
+
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
+import retrofit2.http.POST;
+
 
 /**
  * Created by ndimphiwe.bontsi on 2018/01/31.
  */
-@Dao
+
 public interface AddressDAO {
-    @Query(" select * from address")
-    List<Address> getAddresses();
-    @Query("SELECT * FROM address where street LIKE  :street")
-    Address findByStreet(String street);
 
-    @Query("select * from address where address_id like :address_id")
-    Address findById(int address_id);
+    @FormUrlEncoded
+    @GET("eventHandler/addresses.php")
+   Call<List<Address>> getAddresses();
+    @FormUrlEncoded
+    @GET("eventHandler/addresses.php")
+   Call< Address> findByStreet(@Field("street") String street);
+    @FormUrlEncoded
+    @GET("eventHandler/addresses.php")
+    Call<Address> findById(@Field("id") int address_id);
+    @FormUrlEncoded
+    @POST("eventHandler/addresses.php")
+    Call<Address> insertAll(@Field("address") Address... addresses);
 
-    @Query("SELECT COUNT(*) from address")
-    int countAddresses();
-
-    @Insert
-    void insertAll(Address... addresses);
-
-    @Delete
-    void delete(Address address);
 }

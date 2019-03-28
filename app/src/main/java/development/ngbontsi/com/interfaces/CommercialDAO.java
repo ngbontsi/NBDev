@@ -1,33 +1,38 @@
 package development.ngbontsi.com.interfaces;
 
-import android.arch.persistence.room.Dao;
-import android.arch.persistence.room.Delete;
-import android.arch.persistence.room.Insert;
-import android.arch.persistence.room.Query;
+
+
 
 import java.util.List;
 
-import development.ngbontsi.com.model.Address;
+
 import development.ngbontsi.com.model.Commercial;
+import retrofit2.Call;
+
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
+import retrofit2.http.POST;
+
 
 /**
  * Created by ndimphiwe.bontsi on 2018/01/31.
  */
-@Dao
+
 public interface CommercialDAO {
-    @Query(" select * from commercial")
-    List<Commercial> getCommercials();
-    @Query("SELECT * FROM commercial where description LIKE  :description")
-    Commercial findByDescription(String description);
-    @Query("select * from commercial where event_commercial_id like :event_commercial_id")
-    Commercial findById(int event_commercial_id);
 
-    @Query("SELECT COUNT(*) from commercial")
-    int countCommercials();
+    @FormUrlEncoded
+    @GET("eventHandler/commercials.php")
+   Call<List<Commercial>> getCommercials();
+    @FormUrlEncoded
+    @GET("eventHandler/commercials.php")
+   Call< Commercial> findByDescription(@Field("description") String description);
+    @FormUrlEncoded
+    @GET("eventHandler/commercials.php")
+    Call<Commercial> findById(@Field("id") int event_commercial_id);
+    @FormUrlEncoded
+    @POST("eventHandler/commercials.php")
+    Call<Commercial> insertAll(@Field("object") Commercial... commercials);
 
-    @Insert
-    void insertAll(Commercial... commercials);
 
-    @Delete
-    void delete(Commercial commercial);
 }

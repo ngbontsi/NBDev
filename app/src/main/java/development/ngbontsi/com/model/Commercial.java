@@ -1,18 +1,17 @@
 package development.ngbontsi.com.model;
 
-import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.PrimaryKey;
+
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by nbontsi on 2017/06/07.
  */
 
-@Entity(tableName = "commercial")
+
 public class Commercial {
-    @PrimaryKey(autoGenerate = true)
+    @SerializedName("commercial_id")
     private int event_commercial_id;
-    @ColumnInfo(name = "description")
+    @SerializedName( "description")
     private String event_commercial_description;
 
     public int getEvent_commercial_id() {

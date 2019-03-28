@@ -12,7 +12,6 @@ import java.util.List;
 
 import development.ngbontsi.com.R;
 import development.ngbontsi.com.constants.ApplicationConstants;
-import development.ngbontsi.com.database.ApplicationDatabase;
 import development.ngbontsi.com.databinding.ActivityAddUserBinding;
 import development.ngbontsi.com.model.Address;
 import development.ngbontsi.com.model.Organizer;

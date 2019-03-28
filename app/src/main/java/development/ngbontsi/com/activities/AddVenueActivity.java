@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import development.ngbontsi.com.R;
-import development.ngbontsi.com.database.ApplicationDatabase;
 import development.ngbontsi.com.databinding.ActivityAddVenueBinding;
 import development.ngbontsi.com.model.Venue;
 import development.ngbontsi.com.util.InputValidation;

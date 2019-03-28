@@ -1,33 +1,36 @@
 package development.ngbontsi.com.interfaces;
 
-import android.arch.persistence.room.Dao;
-import android.arch.persistence.room.Delete;
-import android.arch.persistence.room.Insert;
-import android.arch.persistence.room.Query;
+
+
 
 import java.util.List;
 
 import development.ngbontsi.com.model.User;
+import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
+import retrofit2.http.POST;
+
 
 /**
  * Created by ndimphiwe.bontsi on 2018/01/31.
  */
-@Dao
+
 public interface UserDAO {
-    @Query(" select * from users")
-    List<User> getUsers();
-    @Query("SELECT * FROM users where first_name LIKE  :firstName AND last_name LIKE :lastName")
-    User findByName(String firstName, String lastName);
+    @FormUrlEncoded
+    @GET("eventHandler/user.php")
+    Call<List<User>> getUsers();
+    @FormUrlEncoded
+    @GET("eventHandler/user.php")
+    Call<User> findByName(@Field("firstname") String firstName,@Field("lastname") String lastName);
 
-    @Query("select * from users where id like :id")
-    User findById(int id);
+    @FormUrlEncoded
+    @GET("eventHandler/user.php")
+    Call<User> findById(@Field("id") int id);
 
-    @Query("SELECT COUNT(*) from users")
-    int countUsers();
+    @FormUrlEncoded
+    @POST("eventHandler/user.php")
+    Call<User> insertAll(@Field("object") User... users);
 
-    @Insert
-    void insertAll(User... users);
-
-    @Delete
-    void delete(User user);
 }

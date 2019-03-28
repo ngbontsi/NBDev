@@ -1,34 +1,35 @@
 package development.ngbontsi.com.interfaces;
 
-import android.arch.persistence.room.Dao;
-import android.arch.persistence.room.Delete;
-import android.arch.persistence.room.Insert;
-import android.arch.persistence.room.Query;
+
+
 
 import java.util.List;
 
-import development.ngbontsi.com.model.Commercial;
+
 import development.ngbontsi.com.model.EventStatus;
+import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
+import retrofit2.http.POST;
+
 
 /**
  * Created by ndimphiwe.bontsi on 2018/01/31.
  */
-@Dao
+
 public interface EventStatusDAO {
-    @Query(" select * from event_status")
-    List<EventStatus> getEventStatuses();
-    @Query("SELECT * FROM event_status where description LIKE  :description")
-    EventStatus findByDescription(String description);
+    @FormUrlEncoded
+    @GET("eventHandler/eventStatus.php")
+    Call<List<EventStatus>> getEventStatuses();
+    @FormUrlEncoded
+    @GET("eventHandler/eventStatus.php")
+    Call<EventStatus> findByDescription(@Field("description") String description);
+    @FormUrlEncoded
+    @GET("eventHandler/eventStatus.php")
+    Call<EventStatus> findById(@Field("id") int event_status_id);
+    @FormUrlEncoded
+  @POST("eventHandler/eventStatus.php")
+  Call<EventStatus> insertAll(@Field("object") EventStatus... eventStatuses);
 
-    @Query("select * from event_status where event_status_id like :event_status_id")
-    EventStatus findById(int event_status_id);
-
-    @Query("SELECT COUNT(*) from event_status")
-    int countEventStatuses();
-
-    @Insert
-    void insertAll(EventStatus... eventStatuses);
-
-    @Delete
-    void delete(EventStatus eventStatus);
 }

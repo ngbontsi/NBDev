@@ -1,34 +1,35 @@
 package development.ngbontsi.com.interfaces;
 
-import android.arch.persistence.room.Dao;
-import android.arch.persistence.room.Delete;
-import android.arch.persistence.room.Insert;
-import android.arch.persistence.room.Query;
+
+
 
 import java.util.List;
 
-import development.ngbontsi.com.model.EventStatus;
+
 import development.ngbontsi.com.model.EventType;
+import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
+import retrofit2.http.POST;
+
 
 /**
  * Created by ndimphiwe.bontsi on 2018/01/31.
  */
-@Dao
 public interface EventTypeDAO {
-    @Query(" select * from event_type")
-    List<EventType> getEventStatuses();
-    @Query("SELECT * FROM event_type where description LIKE  :description")
-    EventType findByDescription(String description);
 
-    @Query("select * from event_type where event_type_id like :event_type_id")
-    EventType findById(int event_type_id);
+    @FormUrlEncoded
+    @GET("eventHandler/eventType.php")
+    Call<List<EventType>> getEventStatuses();
+    @FormUrlEncoded
+    @GET("eventHandler/eventType.php")
+    Call<EventType> findByDescription(@Field("description") String description);
+    @FormUrlEncoded
+    @GET("eventHandler/eventType.php")
+    Call<EventType> findById(@Field("id") int event_type_id);
+    @FormUrlEncoded
+    @POST("eventHandler/eventType.php")
+    Call<EventType> insertAll(@Field("object") EventType... eventTypes);
 
-    @Query("SELECT COUNT(*) from event_type")
-    int countEventStatuses();
-
-    @Insert
-    void insertAll(EventType... eventTypes);
-
-    @Delete
-    void delete(EventType eventType);
 }

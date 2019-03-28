@@ -5,7 +5,6 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 
 
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
@@ -13,8 +12,6 @@ import android.view.View;
 import development.ngbontsi.com.R;
 
 
-import development.ngbontsi.com.database.LoginData;
-import development.ngbontsi.com.database.UserData;
 import development.ngbontsi.com.databinding.ActivityLogInBinding;
 import development.ngbontsi.com.util.InputValidation;
 
@@ -27,8 +24,8 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
 
 
    private ActivityLogInBinding logInBinding;
-   private LoginData userDatabases;
-    private InputValidation inputValidation;
+   private InputValidation inputValidation;
+
 
 
     @Override

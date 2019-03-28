@@ -1,19 +1,19 @@
 package development.ngbontsi.com.model;
 
-import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.PrimaryKey;
+
+
+import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
-@Entity(tableName = "users")
+
 public class User implements Serializable{
 
-	@PrimaryKey(autoGenerate = true)
+	@SerializedName("id")
 	private int id;
-	@ColumnInfo(name= "first_name")
+	@SerializedName("first_name")
 	private String name;
 
-	@ColumnInfo(name="last_name")
+	@SerializedName("last_name")
 	private String lastName;
 
 	public int getAddressid() {
@@ -24,7 +24,7 @@ public class User implements Serializable{
 		this.addressid = addressid;
 	}
 
-	@ColumnInfo(name = "address_id")
+	@SerializedName("address_id")
 	private int addressid;
 
 	public String getLastName() {
@@ -35,9 +35,9 @@ public class User implements Serializable{
 		this.lastName = lastName;
 	}
 
-	@ColumnInfo(name="email")
+	@SerializedName("email")
 	private String email;
-	@ColumnInfo(name= "password")
+	@SerializedName("password")
 	private String password;
 	public String getEmail() {
 		return email;

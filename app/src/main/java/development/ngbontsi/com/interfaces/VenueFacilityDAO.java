@@ -1,33 +1,35 @@
 package development.ngbontsi.com.interfaces;
 
-import android.arch.persistence.room.Dao;
-import android.arch.persistence.room.Delete;
-import android.arch.persistence.room.Insert;
-import android.arch.persistence.room.Query;
+
+
 
 import java.util.List;
 
-import development.ngbontsi.com.model.Venue;
+
 import development.ngbontsi.com.model.VenueFacility;
+import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
+import retrofit2.http.POST;
+
 
 /**
  * Created by ndimphiwe.bontsi on 2018/01/31.
  */
-@Dao
+
 public interface VenueFacilityDAO {
-    @Query(" select * from venue_facility")
-    List<VenueFacility> getVenueFacilities();
-    @Query("SELECT * FROM venue_facility where description LIKE  :description")
-    VenueFacility findByDescription(String description);
-    @Query("select * from venue_facility where facility_code like :facility_code")
-    VenueFacility findById(int facility_code);
+    @FormUrlEncoded
+    @GET("eventHandler/facility.php")
+    Call<List<VenueFacility>> getVenueFacilities();
+    @FormUrlEncoded
+    @GET("eventHandler/facility.php")
+    Call<VenueFacility> findByDescription(@Field("description") String description);
+    @FormUrlEncoded
+    @GET("eventHandler/facility.php")
+    Call<VenueFacility> findById(@Field("id") int facility_code);
+    @FormUrlEncoded
+    @POST("eventHandler/facility.php")
+    Call<VenueFacility> insertAll(@Field("object") VenueFacility... venueFacilities);
 
-    @Query("SELECT COUNT(*) from venue_facility")
-    int countVenueFacilities();
-
-    @Insert
-    void insertAll(VenueFacility... venueFacilities);
-
-    @Delete
-    void delete(VenueFacility venueFacility);
 }

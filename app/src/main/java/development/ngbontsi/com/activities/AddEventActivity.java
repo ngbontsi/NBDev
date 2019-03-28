@@ -8,14 +8,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import development.ngbontsi.com.R;
-import development.ngbontsi.com.database.ApplicationDatabase;
 import development.ngbontsi.com.databinding.ActivityAddEventBinding;
-import development.ngbontsi.com.interfaces.EventStatusDAO;
-import development.ngbontsi.com.interfaces.EventTypeDAO;
 import development.ngbontsi.com.model.Commercial;
 import development.ngbontsi.com.model.EventStatus;
 import development.ngbontsi.com.model.EventType;

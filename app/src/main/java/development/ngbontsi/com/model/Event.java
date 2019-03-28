@@ -1,32 +1,31 @@
 package development.ngbontsi.com.model;
 
-import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.PrimaryKey;
 
-import java.util.Date;
+
+import com.google.gson.annotations.SerializedName;
+
 
 /**
  * Created by nbontsi on 2017/06/07.
  */
 
-@Entity(tableName = "event")
+
 public class Event {
-    @PrimaryKey(autoGenerate = true)
+    @SerializedName("event_id")
     private int event_id;
-    @ColumnInfo(name = "event_status_id")
+    @SerializedName("event_status_id")
     private int event_status_id;
-    @ColumnInfo(name = "event_type_id")
+    @SerializedName( "event_type_id")
     private int event_type_id;
-    @ColumnInfo(name = "event_commercial_id")
+    @SerializedName( "event_commercial_id")
     private int event_commercial_id;
-    @ColumnInfo(name = "organizer_id")
+    @SerializedName( "organizer_id")
     private int organizer_id;
-    @ColumnInfo(name = "venue_id")
+    @SerializedName( "venue_id")
     private int venue_id;
-    @ColumnInfo(name = "description")
+    @SerializedName("description")
     private  String name;
-    @ColumnInfo(name = "start_date")
+    @SerializedName("start_date")
     private String startDate;
 
     public String getStartDate() {
@@ -45,7 +44,7 @@ public class Event {
         this.endDate = endDate;
     }
 
-    @ColumnInfo(name = "end_date")
+    @SerializedName("end_date")
 
     private  String endDate;
 

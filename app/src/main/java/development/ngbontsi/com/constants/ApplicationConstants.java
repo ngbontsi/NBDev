@@ -17,6 +17,7 @@ public enum ApplicationConstants {
     User_role("USER"),
     Administration_role("ADMIN"),
     Administration_user("ngbontsi"),
+    Application_url("http://mkclothingsa.co.za:2082/eventHandler"),
     Mails("Mails");
 
     private String model;

@@ -1,26 +1,13 @@
 package development.ngbontsi.com.activities;
-import  static development.ngbontsi.com.constants.ApplicationConstants.Organizer_role;
-import  static development.ngbontsi.com.constants.ApplicationConstants.User_role;
-import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-
 import development.ngbontsi.com.R;
 
-import development.ngbontsi.com.api.ApplicationAPI;
-import development.ngbontsi.com.database.AddressData;
-import development.ngbontsi.com.database.LoginData;
-import development.ngbontsi.com.database.UserData;
 import development.ngbontsi.com.databinding.ActivityRegisterBinding;
-import development.ngbontsi.com.model.Address;
-import development.ngbontsi.com.model.Login;
-import development.ngbontsi.com.model.User;
 import development.ngbontsi.com.util.InputValidation;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -114,28 +101,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         }
 
 
-        if (!inputValidation.isInputEditTextFilled(registerBinding.textInputEditTextCity, registerBinding.textInputLayoutCity, getString(R.string.error_message_mandotary))) {
-            return;
-        }
-        if (!inputValidation.isInputEditTextFilled(registerBinding.textInputEditTextLine1, registerBinding.textInputLayoutLine1, getString(R.string.error_message_mandotary))) {
-            return;
-        }
-        if (!inputValidation.isInputEditTextFilled(registerBinding.textInputEditTextLine2, registerBinding.textInputLayoutLine2, getString(R.string.error_message_mandotary))) {
-            return;
-        }
-        if (!inputValidation.isInputEditTextFilled(registerBinding.textInputEditTextLine3, registerBinding.textInputLayoutLine3, getString(R.string.error_message_mandotary))) {
-            return;
-        }
-
-        if (!inputValidation.isInputEditTextFilled(registerBinding.textInputEditTextProvince, registerBinding.textInputLayoutProvince, getString(R.string.error_message_mandotary))) {
-            return;
-        }
-        if (!inputValidation.isInputEditTextFilled(registerBinding.textInputEditTextStreet, registerBinding.textInputLayoutStreet, getString(R.string.error_message_mandotary))) {
-            return;
-        }
-        if (!inputValidation.isInputEditTextFilled(registerBinding.textInputEditTextPostalCode, registerBinding.textInputLayoutPostalCode, getString(R.string.error_message_mandotary))) {
-            return;
-        }
 
 
 
@@ -211,21 +176,13 @@ insertUser();
         registerBinding.textInputEditTextPassword.setText(null);
         registerBinding.textInputEditTextConfirmPassword.setText(null);
 
-        registerBinding.textInputEditTextCity.setText(null);
-        registerBinding.textInputEditTextLine1.setText(null);
-        registerBinding.textInputEditTextLine2.setText(null);
-        registerBinding.textInputEditTextLine3.setText(null);
-        registerBinding.textInputEditTextProvince.setText(null);
-        registerBinding.textInputEditTextStreet.setText(null);
-        registerBinding.textInputEditTextPostalCode.setText(null);
-        registerBinding.chkOrganiser.setChecked(false);
-        registerBinding.chkUser.setChecked(true);
+
 
     }
 
     private void insertUser(){
 
-        Retrofit retrofit= new Retrofit.Builder().baseUrl("http://localhost/").build();
+        Retrofit retrofit= new Retrofit.Builder().baseUrl("http://mkclothingsa.co.za/").build();
 
         ApplicationAPI api = retrofit.create(ApplicationAPI.class);
 

@@ -1,33 +1,36 @@
 package development.ngbontsi.com.interfaces;
 
-import android.arch.persistence.room.Dao;
-import android.arch.persistence.room.Delete;
-import android.arch.persistence.room.Insert;
-import android.arch.persistence.room.Query;
+
+
+
 
 import java.util.List;
 
 import development.ngbontsi.com.model.Login;
-import development.ngbontsi.com.model.User;
+
+import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
+import retrofit2.http.POST;
+
 
 /**
  * Created by ndimphiwe.bontsi on 2018/01/31.
  */
-@Dao
+
 public interface LoginDAO {
-    @Query(" select * from login")
-    List<Login> getLogins();
-    @Query("SELECT * FROM login where username LIKE  :username")
-    Login findByUserName(String username);
-    @Query("select * from login where id like :id")
-    Login findById(int id);
+    @FormUrlEncoded
+    @GET("eventHandler/login.php")
+    Call<List<Login>> getLogins();
+    @FormUrlEncoded
+    @GET("eventHandler/login.php")
+    Call<Login> findByUserName(@Field("username") String username);
+    @FormUrlEncoded
+    @GET("eventHandler/login.php")
+    Call<Login> findById(@Field("id") int id);
+    @FormUrlEncoded
+    @POST("eventHandler/login.php")
+    Call<Login> insertAll(@Field("object") Login... logins);
 
-    @Query("SELECT COUNT(*) from login")
-    int countLogins();
-
-    @Insert
-    void insertAll(Login... logins);
-
-    @Delete
-    void delete(Login login);
 }
